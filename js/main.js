@@ -14,7 +14,11 @@ function init() {
         fontSize: 15,
         fillColor: '#000000',
         fontFamily: 'sans-serif',
-        strokeColor: '#000000'
+        strokeColor: '#000000',
+        shadowOffsetX: 0,
+        shadowOffsetY: 0,
+        shadowBlur: 0,
+        shadowColor: 'rgba(0,0,0,0)',
     }
     createImgs()
     renderImgs();
@@ -44,15 +48,28 @@ function renderImgs() {
 
 
 function onGalleryImgClick(elImg) {
-    openModal()
+    toggleModal()
+    
     currImg = createImg(elImg.src)
     setCanvasSize(elImg)
     drawImage(currImg)
 }
 
-function openModal() {
+function toggleModal() {
+    toggleBtn('.btn-download')
+    toggleBtn('.btn-back')
+
     $('.modal').slideToggle(400)
     $('.modal').css('display', 'flex')
+}
+
+function onBack() {
+    toggleModal()
+}
+
+function toggleBtn(selector) {
+    $(selector).fadeToggle(300)
+    $(selector).css('display','inline-block')
 }
 
 function createImg(imgSrc) {
@@ -84,12 +101,27 @@ function onTxtChange(elInput) {
     }
 }
 
+function onShadowChange(isChecked) {
+    if (isChecked) {
+        gText.shadowColor = 'rgba(0,0,0,0.4)'
+        gText.shadowBlur = 1
+        gText.shadowOffsetX = 5
+        gText.shadowOffsetY = 5
+    } else {
+        gText.shadowColor = 'rgba(0,0,0,0)'
+        gText.shadowBlur = 0
+        gText.shadowOffsetX = 0
+        gText.shadowOffsetY = 0
+    }
+    drawText()
+}
+
 function drawText() {
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
     drawImage(currImg)
-    gCtx.font = `${gText.fontSize}px ${gText.fontFamily}`
-    gCtx.fillStyle = gText.fillColor
-    gCtx.strokeStyle = gText.strokeColor
+    updateContext()
+    
+    
     gCtx.fillText(gText.topText, 100, 100)
     gCtx.strokeText(gText.topText, 100, 100)
     gCtx.fillText(gText.botText, 100, 600)
@@ -109,16 +141,24 @@ function onStrokeColorChange(color) {
 }
 
 function onFontSizeBtnMinus() {
-    var currVal = +($('.input-font-size').val())
-    if (currVal < 0) return;
-    $('.input-font-size').val(currVal - 1)
-    gText.fontSize = currVal;
+    var fontSize = +($('.input-font-size').val())
+    if (fontSize < 0) return;
+    $('.input-font-size').val(fontSize - 1)
+    gText.fontSize = fontSize;
     drawText()
 }
 
 function onFontSizeBtnPlus() {
-    var currVal = +($('.input-font-size').val())
-    $('.input-font-size').val(currVal + 1)
-    gText.fontSize = currVal;
+    var fontSize = +($('.input-font-size').val())
+    $('.input-font-size').val(fontSize + 1)
+    gText.fontSize = fontSize;
     drawText()
 }
+
+
+
+function onDownload(elLink) {
+    elLink.href = gCanvas.toDataURL()
+    elLink.download = 'my-canvas.jpg'
+}
+

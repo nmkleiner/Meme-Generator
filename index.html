@@ -1,36 +1,45 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Meme Generator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet"  href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+        crossorigin="anonymous">
 </head>
 
 <body onload="init()" class="d-flex flex-column">
     <header>Meme generator
-        <!-- buttons -->
-        <button class="btn btn-primary">button </button>
+        <button class="btn btn-back btn-primary text-dark" onclick="onBack()">
+            <i class="fas fas-inverse fa-arrow-circle-left"></i>
+        </button>
+        <a class="btn btn-download btn-success" onclick="onDownload(this)">
+            <i class="fas fa-download"></i>
+        </a>
     </header>
+
     <div class="imgs-container d-flex flex-wrap ">
         <!-- imgs -->
     </div>
+
     <div class="modal flex-column justify-content-center">
         <canvas width="100" height="100" id="canvas">Please upgrade your browser.</canvas>
-        <div class="inputs-container d-flex justify-content-center">    
+        <div class="inputs-container d-flex justify-content-center">
             <input type="text" id="top-txt" onkeydown="onTxtChange(this)" placeholder="Top Caption">
             <input type="text" id="bot-txt" onkeydown="onTxtChange(this)" placeholder="Bottom Caption">
-            
+
         </div>
         <div class="font-size-group d-flex justify-content-center">
-        <span class = "font-size">Font Size:</span>
+            <span class="font-size">Font Size:</span>
             <span class="font-size-group-btn">
                 <button type="button" class="btn btn-default btn-number" onclick="onFontSizeBtnMinus()">
                     <span class="glyphicon glyphicon-minus">-</span>
                 </button>
             </span>
-            <input type="number"  class="form-control input-font-size" value="15" min="0" max="30" on>
+            <input type="number" class="form-control input-font-size" value="15" min="0" max="30" on>
             <span class="font-group-btn">
                 <button type="button" class="btn btn-default btn-number" onclick="onFontSizeBtnPlus()">
                     <span class="glyphicon glyphicon-plus">+</span>
@@ -39,6 +48,7 @@
         </div>
         <input type="color" class="color-choose" id="color-choose" onchange="onStrokeColorChange(this.value)">
         <input type="color" class="color-choose" id="color-choose" onchange="onFillColorChange(this.value)">
+        <input type="checkbox" class="shadow" id="shadow-choose" onchange="onShadowChange(this.checked)">
     </div>
     <footer>
         footer
@@ -49,4 +59,5 @@
     <script src="js/main.js"></script>
     <script src="lib/bootstrap/js/bootstrap.js"></script>
 </body>
+
 </html>
