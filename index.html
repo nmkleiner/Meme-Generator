@@ -20,6 +20,21 @@
         <div class="inputs-container d-flex justify-content-center">    
             <input type="text" id="top-txt" onkeydown="onTxtChange(this)" placeholder="Top Caption">
             <input type="text" id="bot-txt" onkeydown="onTxtChange(this)" placeholder="Bottom Caption">
+            
+        </div>
+        <div class="font-size-group d-flex justify-content-center">
+        <span class = "font-size">Font Size:</span>
+            <span class="font-size-group-btn">
+                <button type="button" class="btn btn-default btn-number" onclick="onFontSizeBtnMinus()">
+                    <span class="glyphicon glyphicon-minus">-</span>
+                </button>
+            </span>
+            <input type="number"  class="form-control input-font-size" value="" min="0" max="30" on>
+            <span class="font-group-btn">
+                <button type="button" class="btn btn-default btn-number" onclick="onFontSizesBtnPlus()">
+                    <span class="glyphicon glyphicon-plus">+</span>
+                </button>
+            </span>
         </div>
     </div>
     <footer>

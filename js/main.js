@@ -82,3 +82,18 @@ function drawText() {
     gCtx.fillText()
     
 }
+
+
+function onFontSizeBtnMinus() {
+    var currVal = +($('.input-rate').val())
+     $('.input-rate').val(currVal - 1)
+     gText.fontSize = currVal;
+     drawText ()
+}
+
+function onFontSizeBtnPlus() {
+    var currVal = +($('.input-font-size').val())
+    $('.input-font-size').val(currVal + 1)
+    gText.fontSize = currVal;
+    drawText ()
+}
