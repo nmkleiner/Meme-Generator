@@ -1,13 +1,12 @@
 .imgs-container{
     border: solid black 1px;
-    justify-content: center;
 }
 
 .gallery-img{
-    width: 20vw;
-    height: 20vw;
+    width: 24vw;
+    height: 24vw;
     object-fit: cover;
-    margin-right: 2px;
+    margin-top: 2px;
     
 }
 
