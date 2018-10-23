@@ -1,8 +1,6 @@
 @import "_reset.css";
 @import "_modal.css";
+@import "_helpers.css";
 
 
 
-canvas {
-    border: 1px solid black;
-}
