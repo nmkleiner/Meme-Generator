@@ -1,3 +1,9 @@
 'use strict'
 
-var gImgs=[];
+function init (){
+    renderImgs(gImgs);
+}
+
+
+
+
