@@ -35,25 +35,27 @@ function renderImgs() {
 
 function onGalleryImgClick(elImg) {
     openModal()
+    var img = createImg(elImg.src)
+    console.log(img)
     setCanvasSize(elImg)
-    drawImage(elImg.src)
+    drawImage(img)
 }
-
-function setCanvasSize(elImg) {
-    console.log(elImg.width)
-    console.log(elImg.height)
-}
-
 
 function openModal() {
     $('.modal').slideToggle(400)
 }
 
-
-function drawImage(imgSrc) {
+function createImg(imgSrc) {
     var img = new Image()
     img.src = imgSrc
-    img.onload = function() {
-        gCtx.drawImage(img, 0, 0 ,gCanvas.width, gCanvas.height)
-    }
+    return img
+}
+
+function setCanvasSize(img) {
+    gCanvas.width = img.width*2
+    gCanvas.height = img.height*2
+}
+
+function drawImage(img) {
+    gCtx.drawImage(img, 0, 0 ,gCanvas.width, gCanvas.height)
 }
