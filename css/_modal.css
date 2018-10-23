@@ -1,4 +1,15 @@
 .modal {
     display: none;
     background-color: yellow;
+    z-index: 1;
+    position: fixed;
+    top: 6vh;
+    height: 75vh;
+    width: 100%;
+}
+
+canvas{
+    display: block;
+    /* margin: 0 auto; */
+    border: 1px solid black;
 }

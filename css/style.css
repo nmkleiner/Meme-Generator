@@ -1,8 +1,5 @@
 @import "../lib/bootstrap/css/bootstrap.css";
 @import "_gallery.css";
 @import "_modal.css";
+@import "_helpers.css";
 
-
-canvas {
-    border: 1px solid black;
-}

@@ -15,7 +15,7 @@ function init() {
 function initCanvas() {
     gCanvas = document.querySelector('#canvas');
     gCanvas.width = window.innerWidth - 10//calc something real instead
-    gCanvas.height = window.innerHeight - 10
+    gCanvas.height = window.innerHeight - 200
     gCtx = canvas.getContext('2d');
 }
 
@@ -41,6 +41,7 @@ function onGalleryImgClick(elImg) {
 
 
 function openModal() {
+
     $('.modal').slideToggle(400)
 }
 
