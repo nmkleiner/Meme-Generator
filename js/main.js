@@ -1,28 +1,26 @@
 'use strict'
 
-var gScreenSizes = {}
+var gScreenSizes = {};
 
-function init (){
+function init() {
     gScreenSizes = getScreenSizes()
-    renderImgs(gImgs);
+    createImgs()
+    renderImgs();
 }
 
 
-function renderImgs(gImgs) {
+
+function renderImgs() {
+    var imgs = getImgs();
     var elImgsContainer = document.querySelector('.imgs-container')
     var strHtmls = ''
-    for (let i = 0; i < gImgs.length; i++) {
-        var strHtml =
-            ` <img src="${getImgUrl()}" alt="Img Here" onclick = "openModal(this)">`
+    for (let i = 0; i < imgs.length; i++) {
+        var currImgUrl = imgs[i].url;
+        var strHtml = `<img  class = "gallery-img" src="${currImgUrl}" alt="Img Here" onclick = "openModal(this)">`;
         strHtmls += strHtml;
     }
-    elImgsContainer.innerHtml = strHtmls;
+    elImgsContainer.innerHTML = strHtmls;
 }
-
-function getImgUrl(){
-    
-}
-
 
 
 function onGalleryImgClick(elImg) {
@@ -37,5 +35,5 @@ function openModal() {
 }
 
 function renderCanvas(elImg) {
-    
+
 }
