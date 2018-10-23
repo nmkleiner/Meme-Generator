@@ -19,4 +19,8 @@ canvas{
     border-radius: 50%;
 }
 
+.range-container {
+    background-color: green;
+}
+
 

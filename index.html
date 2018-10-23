@@ -46,6 +46,9 @@
                 </button>
             </span>
         </div>
+        <div class="range-container">
+            <input type="range" min="0" max="16777215" class="color-range" id="color-range" onchange="onRangeColorChange(this.value)">
+        </div>
         <input type="color" class="color-choose" id="color-choose" onchange="onStrokeColorChange(this.value)">
         <input type="color" class="color-choose" id="color-choose" onchange="onFillColorChange(this.value)">
         <input type="checkbox" class="shadow" id="shadow-choose" onchange="onShadowChange(this.checked)">

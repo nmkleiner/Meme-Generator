@@ -8,6 +8,8 @@ var gText = {}
 
 function init() {
     gScreenSizes = getScreenSizes()
+    // gMeme will include gTeaxt and currImg both will be created in service
+    // gMeme = createMeme()
     gText = {
         topText: '',
         botText: '',
@@ -154,7 +156,26 @@ function onFontSizeBtnPlus() {
     gText.fontSize = fontSize;
     drawText()
 }
+// if isYairConfirm()
+// function onFontSizeClick(num) {
+//     var fontSize = +($('.input-font-size').val())
+//     if (fontSize < 0) return;
+//     $('.input-font-size').val(fontSize + num)
+//     gText.fontSize = fontSize;
+//     drawText()
+// }
 
+// make this work on mousemove while mousedown:
+// mouse down -> add event mousemove
+// mouse up -> remove event mousemove
+// mousemove -> onRangeColorChange
+ 
+// make it change the model and drawText 
+function onRangeColorChange(decStr) {
+    var hexStr = getHex(decStr)
+    var $rangeContainer = $('.range-container')
+    $rangeContainer.css('background-color',hexStr)
+}
 
 
 function onDownload(elLink) {
