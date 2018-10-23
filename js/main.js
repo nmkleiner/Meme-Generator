@@ -88,6 +88,8 @@ function drawText() {
     gCtx.clearRect(0,0,gCanvas.width,gCanvas.height)
     drawImage(currImg)
     gCtx.font = `${gText.fontSize}px ${gText.fontFamily}`
+    gCtx.fillStyle = gText.fillColor
+    gCtx.strokeStyle = gText.strokeColor
     gCtx.fillText(gText.topText,100,100)
     gCtx.fillText(gText.botText,100,300)
 }
@@ -95,6 +97,7 @@ function drawText() {
 
 function onColorChange(color) {
     $btn = $('#choose-color')
-    $btn.css()
-    gCtx.fillStyle = color
+    $btn.css('background-color',color)
+    gText.fillColor = color
+    gText.strokeColor = color
 }
