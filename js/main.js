@@ -14,7 +14,7 @@ function init() {
 
 function initCanvas() {
     gCanvas = document.querySelector('#canvas');
-    gCanvas.width = window.innerWidth - 10//calc something real instead
+    gCanvas.width = window.innerWidth - 30//calc something real instead
     gCanvas.height = window.innerHeight - 200
     gCtx = canvas.getContext('2d');
 }
