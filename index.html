@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet"  href="css/style.css" />
 </head>
+
 <body onload="init()" class="d-flex flex-column">
     <header>Meme generator
         <!-- buttons -->
@@ -36,12 +37,13 @@
                 </button>
             </span>
         </div>
-        <input type="color" class="color-choose" id="color-choose" onkeydown="onColorChange(this.value)">
+        <input type="color" class="color-choose" id="color-choose" onchange="onColorChange(this.value)">
     </div>
     <footer>
         footer
     </footer>
     <script src="lib/jquery/jquery.js"></script>
+    <script src="js/utils.js"></script>
     <script src="js/service.js"></script>
     <script src="js/main.js"></script>
     <script src="lib/bootstrap/js/bootstrap.js"></script>

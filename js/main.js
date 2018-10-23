@@ -4,7 +4,7 @@ var gScreenSizes = {};
 var gCanvas
 var gCtx
 var currImg
-var gText ={}
+var gText = {}
 
 function init() {
     gScreenSizes = getScreenSizes()
@@ -14,8 +14,8 @@ function init() {
         fontSize: 15,
         fillColor: '#000000',
         fontFamily: 'sans-serif',
-         strokeColor:'#000000'
-        }
+        strokeColor: '#000000'
+    }
     createImgs()
     renderImgs();
     initCanvas()
@@ -52,7 +52,7 @@ function onGalleryImgClick(elImg) {
 
 function openModal() {
     $('.modal').slideToggle(400)
-    $('.modal').css('display','flex')
+    $('.modal').css('display', 'flex')
 }
 
 function createImg(imgSrc) {
@@ -84,31 +84,31 @@ function onTxtChange(elInput) {
     }
 }
 
-function drawText() { 
-    gCtx.clearRect(0,0,gCanvas.width,gCanvas.height)
+function drawText() {
+    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
     drawImage(currImg)
     gCtx.font = `${gText.fontSize}px ${gText.fontFamily}`
-    gCtx.fillText(gText.topText,100,100)
-    gCtx.fillText(gText.botText,100,300)
+    gCtx.fillText(gText.topText, 100, 100)
+    gCtx.fillText(gText.botText, 100, 600)
 }
 
 
 function onColorChange(color) {
-    $btn = $('#choose-color')
-    $btn.css()
     gCtx.fillStyle = color
+    drawText();
 }
-    function onFontSizeBtnMinus() {
-        var currVal = +($('.input-font-size').val())
-        if (currVal <0) return;
-         $('.input-font-size').val(currVal - 1)
-         gText.fontSize = currVal;
-         drawText ()
-    }
-    
-    function onFontSizeBtnPlus() {
-        var currVal = +($('.input-font-size').val())
-        $('.input-font-size').val(currVal + 1)
-        gText.fontSize = currVal;
-        drawText ()
-    }
+
+function onFontSizeBtnMinus() {
+    var currVal = +($('.input-font-size').val())
+    if (currVal < 0) return;
+    $('.input-font-size').val(currVal - 1)
+    gText.fontSize = currVal;
+    drawText()
+}
+
+function onFontSizeBtnPlus() {
+    var currVal = +($('.input-font-size').val())
+    $('.input-font-size').val(currVal + 1)
+    gText.fontSize = currVal;
+    drawText()
+}
