@@ -1,6 +1,6 @@
-@import "_reset.css";
+@import "../lib/bootstrap/css/bootstrap.css";
+@import "_gallery.css";
 @import "_modal.css";
-
 
 
 canvas {

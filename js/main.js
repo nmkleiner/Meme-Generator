@@ -42,7 +42,6 @@ function onGalleryImgClick(elImg) {
 
 function openModal() {
     $('.modal').slideToggle(400)
-    
 }
 
 function renderCanvas(elImg) {
