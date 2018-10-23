@@ -1,7 +1,7 @@
 @import "_reset.css";
+@import "_modal.css";
 
-body {
-}
+
 
 canvas {
     border: 1px solid black;
