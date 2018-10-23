@@ -88,14 +88,24 @@ function drawText() {
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
     drawImage(currImg)
     gCtx.font = `${gText.fontSize}px ${gText.fontFamily}`
+    gCtx.fillStyle = gText.fillColor
+    gCtx.strokeStyle = gText.strokeColor
     gCtx.fillText(gText.topText, 100, 100)
+    gCtx.strokeText(gText.topText, 100, 100)
     gCtx.fillText(gText.botText, 100, 600)
+    gCtx.strokeText(gText.botText, 100, 600)
 }
 
 
-function onColorChange(color) {
-    gCtx.fillStyle = color
-    drawText();
+function onFillColorChange(color) {
+    gText.fillColor = color
+    drawText()
+}
+
+
+function onStrokeColorChange(color) {
+    gText.strokeColor = color
+    drawText() 
 }
 
 function onFontSizeBtnMinus() {
