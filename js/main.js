@@ -36,13 +36,14 @@ function renderImgs() {
 function onGalleryImgClick(elImg) {
     openModal()
     var img = createImg(elImg.src)
-    console.log(img)
     setCanvasSize(elImg)
     drawImage(img)
 }
 
 function openModal() {
     $('.modal').slideToggle(400)
+    $('.modal').css('display','flex')
+
 }
 
 function createImg(imgSrc) {
@@ -52,10 +53,32 @@ function createImg(imgSrc) {
 }
 
 function setCanvasSize(img) {
-    gCanvas.width = img.width*2
-    gCanvas.height = img.height*2
+    // think about responsivity in here
+
+    // mobile
+    gCanvas.width = window.innerWidth
+    gCanvas.height = window.innerWidth
 }
 
 function drawImage(img) {
-    gCtx.drawImage(img, 0, 0 ,gCanvas.width, gCanvas.height)
+    gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
+}
+
+
+function onTxtChange(elInput) {
+    var id = elInput.id
+    var text = elInput.value
+    if (id === 'top-txt') {
+        drawText(text,'top')
+    } else {
+        drawText(text,'bot')
+        
+    }
+}
+
+
+function drawText() {   
+    gCtx.moveTo(100,100)
+    gCtx.fillText()
+    
 }

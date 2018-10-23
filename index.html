@@ -15,11 +15,11 @@
     <div class="imgs-container d-flex flex-wrap justify-content-between">
         <!-- imgs -->
     </div>
-    <div class="modal flex flex-column">
+    <div class="modal flex-column justify-content-center">
         <canvas width="100" height="100" id="canvas">Please upgrade your browser.</canvas>
         <div class="inputs-container d-flex justify-content-center">    
-            <input type="text" id="top-txt" placeholder="Top Caption">
-            <input type="text" id="bot-txt" placeholder="Bottom Caption">
+            <input type="text" id="top-txt" onkeydown="onTxtChange(this)" placeholder="Top Caption">
+            <input type="text" id="bot-txt" onkeydown="onTxtChange(this)" placeholder="Bottom Caption">
         </div>
     </div>
     <footer>
