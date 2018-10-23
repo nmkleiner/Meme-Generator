@@ -51,7 +51,6 @@ function onGalleryImgClick(elImg) {
 function openModal() {
     $('.modal').slideToggle(400)
     $('.modal').css('display','flex')
-
 }
 
 function createImg(imgSrc) {
@@ -76,17 +75,21 @@ function onTxtChange(elInput) {
     var id = elInput.id
     var text = elInput.value
     if (id === 'top-txt') {
-        drawText(text,100,100)
+        gText.topText = text
+        drawText()
     } else {
-        drawText(text,100,300)
+        gText.botText = text
+        drawText()
     }
 }
 
 
-function drawText(text,x,y) { 
+function drawText() { 
     gCtx.clearRect(0,0,gCanvas.width,gCanvas.height)
     drawImage(currImg)
-    gCtx.fillText(text,x,y)
+    gCtx.font = `${gText.fontSize}px ${gText.fontFamily}`
+    gCtx.fillText(gText.topText,100,100)
+    gCtx.fillText(gText.botText,100,300)
 }
 
 
