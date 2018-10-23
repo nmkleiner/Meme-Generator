@@ -3,9 +3,19 @@
 var gScreenSizes = {};
 var gCanvas
 var gCtx
+var currImg
+var gText ={}
 
 function init() {
     gScreenSizes = getScreenSizes()
+    gText = {
+        topText: '',
+        botText: '',
+        fontSize: 15,
+        fillColor: '#000000',
+        fontFamily: 'sans-serif',
+         strokeColor:'#000000'
+        }
     createImgs()
     renderImgs();
     initCanvas()
@@ -35,15 +45,14 @@ function renderImgs() {
 
 function onGalleryImgClick(elImg) {
     openModal()
-    var img = createImg(elImg.src)
+    currImg = createImg(elImg.src)
     setCanvasSize(elImg)
-    drawImage(img)
+    drawImage(currImg)
 }
 
 function openModal() {
     $('.modal').slideToggle(400)
     $('.modal').css('display','flex')
-
 }
 
 function createImg(imgSrc) {
@@ -52,10 +61,9 @@ function createImg(imgSrc) {
     return img
 }
 
-function setCanvasSize(img) {
+function setCanvasSize() {
     // think about responsivity in here
-
-    // mobile
+    // right now works for mobile
     gCanvas.width = window.innerWidth
     gCanvas.height = window.innerWidth
 }
@@ -64,36 +72,43 @@ function drawImage(img) {
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
 }
 
-
 function onTxtChange(elInput) {
     var id = elInput.id
     var text = elInput.value
     if (id === 'top-txt') {
-        drawText(text,'top')
+        gText.topText = text
+        drawText()
     } else {
-        drawText(text,'bot')
-        
+        gText.botText = text
+        drawText()
     }
 }
 
+function drawText() { 
+    gCtx.clearRect(0,0,gCanvas.width,gCanvas.height)
+    drawImage(currImg)
+    gCtx.font = `${gText.fontSize}px ${gText.fontFamily}`
+    gCtx.fillText(gText.topText,100,100)
+    gCtx.fillText(gText.botText,100,300)
+}
 
-function drawText() {   
-    gCtx.moveTo(100,100)
-    gCtx.fillText()
+
+function onColorChange(color) {
+    $btn = $('#choose-color')
+    $btn.css()
+    gCtx.fillStyle = color
+}
+    function onFontSizeBtnMinus() {
+        var currVal = +($('.input-font-size').val())
+        if (currVal <0) return;
+         $('.input-font-size').val(currVal - 1)
+         gText.fontSize = currVal;
+         drawText ()
+    }
     
-}
-
-
-function onFontSizeBtnMinus() {
-    var currVal = +($('.input-rate').val())
-     $('.input-rate').val(currVal - 1)
-     gText.fontSize = currVal;
-     drawText ()
-}
-
-function onFontSizeBtnPlus() {
-    var currVal = +($('.input-font-size').val())
-    $('.input-font-size').val(currVal + 1)
-    gText.fontSize = currVal;
-    drawText ()
-}
+    function onFontSizeBtnPlus() {
+        var currVal = +($('.input-font-size').val())
+        $('.input-font-size').val(currVal + 1)
+        gText.fontSize = currVal;
+        drawText ()
+    }

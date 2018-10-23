@@ -29,13 +29,14 @@
                     <span class="glyphicon glyphicon-minus">-</span>
                 </button>
             </span>
-            <input type="number"  class="form-control input-font-size" value="" min="0" max="30" on>
+            <input type="number"  class="form-control input-font-size" value="15" min="0" max="30" on>
             <span class="font-group-btn">
-                <button type="button" class="btn btn-default btn-number" onclick="onFontSizesBtnPlus()">
+                <button type="button" class="btn btn-default btn-number" onclick="onFontSizeBtnPlus()">
                     <span class="glyphicon glyphicon-plus">+</span>
                 </button>
             </span>
         </div>
+        <input type="color" class="color-choose" id="color-choose" onkeydown="onColorChange(this.value)">
     </div>
     <footer>
         footer
