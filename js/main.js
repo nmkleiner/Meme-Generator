@@ -3,9 +3,17 @@
 var gScreenSizes = {};
 var gCanvas
 var gCtx
+var currImg
+var gText ={}
 
 function init() {
     gScreenSizes = getScreenSizes()
+    gText = {
+        fontSize: 10,
+        fillColor: '#000000',
+        fontFamily: 'sans-serif',
+         strokeColor:'#000000'
+        }
     createImgs()
     renderImgs();
     initCanvas()
@@ -35,9 +43,9 @@ function renderImgs() {
 
 function onGalleryImgClick(elImg) {
     openModal()
-    var img = createImg(elImg.src)
+    currImg = createImg(elImg.src)
     setCanvasSize(elImg)
-    drawImage(img)
+    drawImage(currImg)
 }
 
 function openModal() {
@@ -52,10 +60,9 @@ function createImg(imgSrc) {
     return img
 }
 
-function setCanvasSize(img) {
+function setCanvasSize() {
     // think about responsivity in here
-
-    // mobile
+    // right now works for mobile
     gCanvas.width = window.innerWidth
     gCanvas.height = window.innerWidth
 }
@@ -69,16 +76,22 @@ function onTxtChange(elInput) {
     var id = elInput.id
     var text = elInput.value
     if (id === 'top-txt') {
-        drawText(text,'top')
+        drawText(text,100,100)
     } else {
-        drawText(text,'bot')
-        
+        drawText(text,100,300)
     }
 }
 
 
-function drawText() {   
-    gCtx.moveTo(100,100)
-    gCtx.fillText()
-    
+function drawText(text,x,y) { 
+    gCtx.clearRect(0,0,gCanvas.width,gCanvas.height)
+    drawImage(currImg)
+    gCtx.fillText(text,x,y)
+}
+
+
+function onColorChange(color) {
+    $btn = $('#choose-color')
+    $btn.css()
+    gCtx.fillStyle = color
 }

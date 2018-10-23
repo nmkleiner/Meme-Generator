@@ -11,6 +11,7 @@ function getScreenSizes() {
 }
 
 function createImgs() {
+
     var imgs = [
         { id: '001', url: 'img/001.jpg', keywords: ['happy'] },
         { id: '002', url: 'img/002.jpg', keywords: ['happy'] },
