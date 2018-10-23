@@ -1,6 +1,9 @@
 'use strict'
 
-var gImgs=[];
+var gImgs = [
+    { id: 1, url: 'img/popo.jpg', keywords: ['happy'] }
+]
+;
 
 
 function getScreenSizes() {
