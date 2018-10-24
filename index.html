@@ -12,28 +12,59 @@
 </head>
 
 <body onload="init()" class="d-flex flex-column">
-    <header>Meme generator
-        <!-- buttons -->
-        <nav>
-            <button class="btn btn-primary">button </button>
-
-            <input class="filter" list="keywords" value="" onchange="onchangeFilter()">
-            <datalist id="keywords">
-                <option value="Happy">
-                <option value="Crazy">
-                <option value="Sarcastic">
-                <option value="Sad">
-                <option value="Animal">
-            </datalist>
-
+    <header>
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Meme generator</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                </ul>
+                <for class="form-inline my-2 my-lg-0">
+                    <input class="filter" list="keywords" value="" onchange="onchangeFilter()">
+                    <datalist id="keywords">
+                        <option value="Happy">
+                        <option value="Crazy">
+                        <option value="Sarcastic">
+                        <option value="Sad">
+                        <option value="Animal">
+                    </datalist>
+                    <br>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="onchangeFilter()">Search</button>
+                </div>
+            </div>
         </nav>
     </header>
 
     <div class="imgs-container center d-flex flex-wrap ">
-        <!-- imgs -->
+        <!--IMGS -->
     </div>
 
-    <!-- canvas modal -->
+    <!-- CANVAS MODAL -->
     <div class="modal flex-column justify-content-between">
         <!-- MODAL HEADER -->
         <header class="modal-top-container d-flex justify-content-start">
@@ -51,64 +82,58 @@
         </div>
 
 
-       
 
-            <!-- MODAL BOT CONTAINER (CONTROL-BOX)  -->
-            <div class="modal-bot-container control-box d-flex flex-column justify-content-center">
-                <!-- CONTROL BOX TOP ROW -->
-                <div class="control-box-top-row d-flex flex-row justify-content-sm-between justify-content-md-around">
 
-                    <div class="shadow-box">
-                        <input type="checkbox" id="checkbox1" onchange="onShadowChange(this.checked)" />
-                        <label for="checkbox1">Shadow<span></span></label>
-                    </div>
+        <!-- MODAL BOT CONTAINER (CONTROL-BOX)  -->
+        <div class="modal-bot-container control-box d-flex flex-column justify-content-center">
+            <!-- CONTROL BOX TOP ROW -->
+            <div class="control-box-top-row d-flex flex-row justify-content-sm-between justify-content-md-around">
 
-                    <div class="font-size-group d-flex">
-                        <span class="font-size-span">Font Size:</span>
-                        <span class="font-size-group-btn">
-                            <button class="btn btn-default btn-number" onclick="onFontSizeClick(-1)">
-                                <span class="glyphicon glyphicon-minus">-</span>
-                            </button>
-                        </span>
-                        <input type="number" class="form-control input-font-size" value="45" min="0" oninput="onFontSizeChange(this.value)">
-                        <span class="font-group-btn">
-                            <button class="btn btn-default btn-number" onclick="onFontSizeClick(1)">
-                                <span class="glyphicon glyphicon-plus">+</span>
-                            </button>
-                        </span>
-                    </div>
+                <div class="shadow-box">
+                    <input type="checkbox" id="checkbox1" onchange="onShadowChange(this.checked)" />
+                    <label for="checkbox1">Shadow<span></span></label>
                 </div>
 
+                <div class="font-size-group d-flex">
+                    <span class="font-size-span">Font Size:</span>
+                    <span class="font-size-group-btn">
+                        <button class="btn btn-default btn-number" onclick="onFontSizeClick(-1)">
+                            <span class="glyphicon glyphicon-minus">-</span>
+                        </button>
+                    </span>
+                    <input type="number" class="form-control input-font-size" value="45" min="0" oninput="onFontSizeChange(this.value)">
+                    <span class="font-group-btn">
+                        <button class="btn btn-default btn-number" onclick="onFontSizeClick(1)">
+                            <span class="glyphicon glyphicon-plus">+</span>
+                        </button>
+                    </span>
+                </div>
+            </div>
 
-                <!-- CONTROL BOX BOT ROW -->
-                <div class="control-box-bot-row d-flex flex-column justify-content-between">
-                    
-                    <div class="fill-color-container">
-                            <button class="btn btn-primary" value="#0069d9" onclick="onFillColorChange(this.value)"></button>
-                            <button class="btn btn-secondary" value="#6c757d" onclick="onFillColorChange(this.value)"></button>
-                            <button class="btn btn-success" value="#28a745" onclick="onFillColorChange(this.value)"></button>
-                            <button class="btn btn-danger" value="#dc3545" onclick="onFillColorChange(this.value)"></button>
-                            <button class="btn btn-warning" value="#ffc107" onclick="onFillColorChange(this.value)"></button>
-                            <button class="btn btn-info" value="#17a2b8" onclick="onFillColorChange(this.value)"></button>
-                            <button class="btn btn-light" value="#f8f9fa" onclick="onFillColorChange(this.value)"></button>
-                            <button class="btn btn-dark" value="#343a40" onclick="onFillColorChange(this.value)"></button>
-                    </div>
 
-                    <div class="stroke-color-container">
-                            <button class="btn btn-primary" value="#0069d9" onclick="onStrokeColorChange(this.value)"></button>
-                            <button class="btn btn-secondary" value="#6c757d" onclick="onStrokeColorChange(this.value)"></button>
-                            <button class="btn btn-success" value="#28a745" onclick="onStrokeColorChange(this.value)"></button>
-                            <button class="btn btn-danger" value="#dc3545" onclick="onStrokeColorChange(this.value)"></button>
-                            <button class="btn btn-warning" value="#ffc107" onclick="onStrokeColorChange(this.value)"></button>
-                            <button class="btn btn-info" value="#17a2b8" onclick="onStrokeColorChange(this.value)"></button>
-                            <button class="btn btn-light" value="#f8f9fa" onclick="onStrokeColorChange(this.value)"></button>
-                            <button class="btn btn-dark" value="#343a40" onclick="onStrokeColorChange(this.value)"></button>
-                    </div>
+            <!-- CONTROL BOX BOT ROW -->
+            <div class="control-box-bot-row d-flex flex-column justify-content-between">
 
-                    <div id="fill-range-container" class="range-container">
-                        <button class="btn btn-sm"></button>
-                    </div>
+                <div class="fill-color-container">
+                    <button class="btn btn-primary" value="#0069d9" onclick="onFillColorChange(this.value)"></button>
+                    <button class="btn btn-secondary" value="#6c757d" onclick="onFillColorChange(this.value)"></button>
+                    <button class="btn btn-success" value="#28a745" onclick="onFillColorChange(this.value)"></button>
+                    <button class="btn btn-danger" value="#dc3545" onclick="onFillColorChange(this.value)"></button>
+                    <button class="btn btn-warning" value="#ffc107" onclick="onFillColorChange(this.value)"></button>
+                    <button class="btn btn-info" value="#17a2b8" onclick="onFillColorChange(this.value)"></button>
+                    <button class="btn btn-light" value="#f8f9fa" onclick="onFillColorChange(this.value)"></button>
+                    <button class="btn btn-dark" value="#343a40" onclick="onFillColorChange(this.value)"></button>
+                </div>
 
+                <div class="stroke-color-container">
+                    <button class="btn btn-primary" value="#0069d9" onclick="onStrokeColorChange(this.value)"></button>
+                    <button class="btn btn-secondary" value="#6c757d" onclick="onStrokeColorChange(this.value)"></button>
+                    <button class="btn btn-success" value="#28a745" onclick="onStrokeColorChange(this.value)"></button>
+                    <button class="btn btn-danger" value="#dc3545" onclick="onStrokeColorChange(this.value)"></button>
+                    <button class="btn btn-warning" value="#ffc107" onclick="onStrokeColorChange(this.value)"></button>
+                    <button class="btn btn-info" value="#17a2b8" onclick="onStrokeColorChange(this.value)"></button>
+                    <button class="btn btn-light" value="#f8f9fa" onclick="onStrokeColorChange(this.value)"></button>
+                    <button class="btn btn-dark" value="#343a40" onclick="onStrokeColorChange(this.value)"></button>
                 </div>
             </div>
         </div>
@@ -123,13 +148,7 @@
             </button>
         </div>
     </div>
-
-    <!-- what's in here? -->
-    <!-- <footer>
-            footer
-        </footer> -->
-
-
+    </div>
 
 
 
