@@ -47,9 +47,9 @@
 
 
         <div class="inputs-container d-flex flex-column">
-            <input type="text" class="caption" id="top-txt" oninput="onTxtChange(0,this.value)" placeholder="Top Caption">
+            <input type="text" class="caption" id="top-txt" oninput="onTxtChange(0,this.value)" onfocus="onTxtFocus(0)" placeholder="Top Caption">
             <canvas width="100" height="100" id="canvas">Please upgrade your browser.</canvas>
-            <input type="text" class="caption" id="bot-txt" oninput="onTxtChange(1,this.value)" placeholder="Bottom Caption">
+            <input type="text" class="caption" id="bot-txt" oninput="onTxtChange(1,this.value)" onfocus="onTxtFocus(1)" placeholder="Bottom Caption">
         </div>
         <footer class=" control-box d-flex flex-wrap">
 
@@ -79,11 +79,6 @@
             </div>
             <div class="color-choose-container">
                 <input type="color" class="fill-color color-choose" oninput="onFillColorChange(this.value)">
-            </div>
-            <div class="top-or-bot-caption-buttons d-flex">
-                <input type="radio" name="caption-buttons" value="top" onchange="onChooseCaption([0,0])"> Top Caption
-                <input type="radio" name="caption-buttons" value="bottom" onchange="onChooseCaption([1,1])"> Bottom Caption
-                <input type="radio" name="caption-buttons" value="both" onchange="onChooseCaption([0,1])"> Both Captions
             </div>
             <div class="shadow-box">
                 <input type="checkbox" class="shadow" id="shadow-choose" onchange="onShadowChange(this.checked)">

@@ -31,14 +31,6 @@ var gMeme = {
     ]
 }
 
-var gCaptions = [0, 1];
-var gCaption1 = gMeme.txts[gCaptions[0]];
-var gCaption2 = gMeme.txts[gCaptions[1]];
-
-
-
-
-
 
 function createImgs() {
 
@@ -83,10 +75,10 @@ function getImgs() {
 }
 
 function setMemeByImgId(imgId) {
-    currImg = gImgs.find(img => {
+    gCurrImg = gImgs.find(img => {
         return (+(img.id) === imgId);
     })
-    gMeme.selectedImgId = currImg.id;
+    gMeme.selectedImgId = gCurrImg.id;
 }
 
 function getMeme() {
@@ -98,40 +90,36 @@ function addText(txtLoc, value) {
 }
 
 
-function addShadow() {
-    gCaption1.shadowOffsetX = gCaption2.shadowOffsetX = 5
-    gCaption1.shadowOffsetY = gCaption2.shadowOffsetY = 5
-    gCaption1.shadowBlur = gCaption2.shadowBlur = 1
-    gCaption1.shadowColor = gCaption2.shadowColor = 'rgba(0,0,0,0.4)'
+function addShadow(currTxtLoc) {
+    var currTxt = gMeme.txts[currTxtLoc];
+    currTxt.shadowOffsetX = 5
+    currTxt.shadowOffsetY = 5
+    currTxt.shadowBlur = 1
+    currTxt.shadowColor = 'rgba(0,0,0,0.4)'
 }
 
-function cancelShadow() {
-    gCaption1.shadowOffsetX = gCaption2.shadowOffsetX = 5
-    gCaption1.shadowOffsetY = gCaption2.shadowOffsetY = 5
-    gCaption1.shadowBlur = gCaption2.shadowBlur = 1
-    gCaption1.shadowColor = gCaption2.shadowColor = 'rgba(0,0,0,0)'
+function cancelShadow(currTxtLoc) {
+    var currTxt = gMeme.txts[currTxtLoc];
+    currTxt.shadowOffsetX =  5
+    currTxt.shadowOffsetY =  5
+    currTxt.shadowBlur =  1
+    currTxt.shadowColor = 'rgba(0,0,0,0)'
 }
 
-function changeFillColor(color) {
-    gCaption1.fillColor = gCaption2.fillColor = color;
+function changeFillColor(color, currTxtLoc) {
+    var currTxt = gMeme.txts[currTxtLoc];
+    currTxt.fillColor= color;
 }
 
-function changeStrokeColor(color) {
-    gCaption1.strokeColor = gCaption2.strokeColor = color;
+function changeStrokeColor(color, currTxtLoc) {
+    var currTxt = gMeme.txts[currTxtLoc];
+    currTxt.strokeColor  = color;
 }
 
-function changeFontSize(fontSize) {
-    gCaption1.fontSize = gCaption2.fontSize = fontSize;
+function changeFontSize(fontSize, currTxtLoc) {
+    var currTxt = gMeme.txts[currTxtLoc];
+    currTxt.fontSize = fontSize;
 }
 
-function setCaptions(caption) {
-    gCaptions = caption;
-    gCaption1 = gMeme.txts[gCaptions[0]];
-    gCaption2 = gMeme.txts[gCaptions[1]];
-}
-
-function getCaptions() {
-    return gCaptions;
-}
 
 
