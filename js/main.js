@@ -20,8 +20,6 @@ function init() {
 
 function initCanvas() {
     gCanvas = document.querySelector('#canvas');
-    // gCanvas.width = window.innerWidth - 30//calc something real instead
-    // gCanvas.height = window.innerHeight - 200
     gCtx = gCanvas.getContext('2d');
 }
 
@@ -61,12 +59,6 @@ function toggleModal() {
     $('.modal').css('display', 'flex')
 }
 
-
-function toggleBtn(selector) {
-    $(selector).fadeToggle(300)
-    $(selector).css('display', 'inline-block')
-}
-
 function createImg(imgSrc) {
     var img = new Image()
     img.src = imgSrc
@@ -82,7 +74,6 @@ function setCanvasSize() {
     } else if (window.innerWidth >= 768) {
         gCanvas.width = 600
         gCanvas.height = 600
-
     } else {
         gCanvas.width = window.innerWidth
         gCanvas.height = window.innerWidth
