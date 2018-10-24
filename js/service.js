@@ -31,9 +31,9 @@ var gMeme = {
     ]
 }
 
-var gCaption = [0, 1];
-var gCaption1 = gMeme.txts[gCaption[0]];
-var gCaption2 = gMeme.txts[gCaption[1]];
+var gCaptions = [0, 1];
+var gCaption1 = gMeme.txts[gCaptions[0]];
+var gCaption2 = gMeme.txts[gCaptions[1]];
 
 
 
@@ -124,14 +124,14 @@ function changeFontSize(fontSize) {
     gCaption1.fontSize = gCaption2.fontSize = fontSize;
 }
 
-function setCaption(caption) {
-    gCaption = caption;
-    gCaption1 = gMeme.txts[gCaption[0]];
-    gCaption2 = gMeme.txts[gCaption[1]];
+function setCaptions(caption) {
+    gCaptions = caption;
+    gCaption1 = gMeme.txts[gCaptions[0]];
+    gCaption2 = gMeme.txts[gCaptions[1]];
 }
 
-function getCaption() {
-    return gCaption;
+function getCaptions() {
+    return gCaptions;
 }
 
 

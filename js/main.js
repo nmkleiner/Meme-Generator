@@ -76,7 +76,6 @@ function setCanvasSize() {
     } else if (window.innerWidth >= 768) {
         gCanvas.width = 600
         gCanvas.height = 600
-
     } else {
         gCanvas.width = window.innerWidth
         gCanvas.height = window.innerWidth
@@ -89,12 +88,11 @@ function drawImage(img) {
 
 function onTxtChange(txtLoc, value) {
     addText(txtLoc, value);
-    drawText()
+    drawText(txtLoc)
 }
 
 function drawText() {
     meme = getMeme();
-
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
     drawImage(currImg)
     setTextStyle(meme)
@@ -107,12 +105,12 @@ function drawText() {
 }
 
 function onChooseCaption(caption) {
-    setCaption(caption)
+    setCaptions(caption)
 }
 
 function setTextStyle(meme) {
-    var caption = getCaption()
-    var currCaption = meme.txts[caption[0]];
+    var captions = getCaptions()
+    var currCaption = meme.txts[captions[0]];
     gCtx.font = `${currCaption.fontSize}px ${currCaption.fontFamily}`
     gCtx.fillStyle = currCaption.fillColor
     gCtx.strokeStyle = currCaption.strokeColor
@@ -144,7 +142,6 @@ function onFontSizeChange(fontSize) {
 }
 
 function onFontSizeClick(num) {
-    console.log(num)
     var fontSize = +($('.input-font-size').val())
     if (fontSize < 0) return;
     fontSize = fontSize + num
