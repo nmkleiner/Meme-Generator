@@ -3,7 +3,8 @@
 var gScreenSizes = {};
 var gCanvas
 var gCtx
-var currImg
+var gCurrImg
+var gCurrTxtLoc
 var meme = {}
 
 
@@ -44,10 +45,9 @@ function onchangeFilter() {
 function onGalleryImgClick(elImg, imgId) {
     setMemeByImgId(imgId)
     toggleModal()
-
-    currImg = createImg(elImg.src)
+    gCurrImg = createImg(elImg.src)
     setCanvasSize(elImg)
-    drawImage(currImg)
+    drawImage(gCurrImg)
 }
 
 function onBackBtn() {
@@ -85,58 +85,62 @@ function drawImage(img) {
 }
 
 function onTxtChange(txtLoc, value) {
-    addText(txtLoc, value);
-    drawText(txtLoc)
+    gCurrTxtLoc = txtLoc;
+    addText(gCurrTxtLoc, value);
+    renderCanvas()
 }
 
-function drawText() {
+function onTxtFocus(txtLoc) {
+    gCurrTxtLoc = txtLoc;
+}
+
+function renderCanvas() {
     meme = getMeme();
+
+    // draw img
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
-    drawImage(currImg)
-    setTextStyle(meme)
+    drawImage(gCurrImg)
 
-    gCtx.fillText(meme.txts[0].line, 100, 100)
-    gCtx.strokeText(meme.txts[0].line, 100, 100)
+    var height = 100;
+    for (let i = 0; i < meme.txts.length; i++) {
 
-    gCtx.fillText(meme.txts[1].line, 100, 300)
-    gCtx.strokeText(meme.txts[1].line, 100, 300)
-}
+        // set Text Style
+        var currTxt = meme.txts[i]
+        gCtx.font = `${currTxt.fontSize}px ${currTxt.fontFamily}`
+        gCtx.fillStyle = currTxt.fillColor
+        gCtx.strokeStyle = currTxt.strokeColor
+        gCtx.shadowOffsetX = currTxt.shadowOffsetX
+        gCtx.shadowOffsetY = currTxt.shadowOffsetY
+        gCtx.shadowBlur = currTxt.shadowBlur
+        gCtx.shadowColor = currTxt.shadowColor
 
-function onChooseCaption(caption) {
-    setCaptions(caption)
-}
 
-function setTextStyle(meme) {
-    var captions = getCaptions()
-    var currCaption = meme.txts[captions[0]];
-    gCtx.font = `${currCaption.fontSize}px ${currCaption.fontFamily}`
-    gCtx.fillStyle = currCaption.fillColor
-    gCtx.strokeStyle = currCaption.strokeColor
-    gCtx.shadowOffsetX = currCaption.shadowOffsetX
-    gCtx.shadowOffsetY = currCaption.shadowOffsetY
-    gCtx.shadowBlur = currCaption.shadowBlur
-    gCtx.shadowColor = currCaption.shadowColor
+        // draws the text in the canvas
+        gCtx.fillText(currTxt.line, 100, height)
+        gCtx.strokeText(currTxt.line, 100, height)
+        height += 200;
+    }
 }
 
 function onShadowChange(isChecked) {
-    if (isChecked) addShadow();
-    else cancelShadow()
-    drawText()
+    if (isChecked) addShadow(gCurrTxtLoc);
+    else cancelShadow(gCurrTxtLoc)
+    renderCanvas()
 }
 
 function onFillColorChange(color) {
-    changeFillColor(color)
-    drawText()
+    changeFillColor(color, gCurrTxtLoc)
+    renderCanvas()
 }
 
 function onStrokeColorChange(color) {
-    changeStrokeColor(color)
-    drawText()
+    changeStrokeColor(color, gCurrTxtLoc)
+    renderCanvas()
 }
 
 function onFontSizeChange(fontSize) {
-    changeFontSize(fontSize)
-    drawText()
+    changeFontSize(fontSize, gCurrTxtLoc)
+    renderCanvas()
 }
 
 function onFontSizeClick(num) {
@@ -144,21 +148,21 @@ function onFontSizeClick(num) {
     if (fontSize < 0) return;
     fontSize = fontSize + num
     $('.input-font-size').val(fontSize)
-    changeFontSize(fontSize)
-    drawText()
+    changeFontSize(fontSize, gCurrTxtLoc)
+    renderCanvas()
 }
 
 function onRangeColorChange(decStr, isFillColor) {
     var color = getHex(decStr)
     if (isFillColor === 'fill') {
         var elRangeContainer = document.querySelector('#fill-range-container')
-        changeFillColor(color)
+        changeFillColor(color, gCurrTxtLoc)
     } else {
         var elRangeContainer = document.querySelector('#stroke-range-container')
-        changeStrokeColor(color)
+        changeStrokeColor(color, gCurrTxtLoc)
     }
     elRangeContainer.style.backgroundColor = color
-    drawText()
+    renderCanvas()
 }
 
 
