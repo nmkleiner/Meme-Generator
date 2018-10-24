@@ -9,15 +9,13 @@
 }
 
 .modal header {
+    width: 100vw;
     position: relative;
-    padding: 5px;
+}
+.modal header .btn{
+background-color: transparent;
 }
 
-.modal header .btn {
-    border-radius: 50%;
-    background-color: transparent;
-    margin: 0 10px;
-}
 
 .modal-mid-container{
     align-items: center;
@@ -75,6 +73,22 @@ canvas {
 .shadow{
     color: aliceblue;
 }
+
+.modal .save-and-share-buttons{
+    width: 100vw;
+    margin-top: 15px;  
+}
+
+.modal .save-and-share-buttons .btn {
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+.button-text {
+    color: aliceblue;
+    font-size: 20px;
+}
+
 
 
 
