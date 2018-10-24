@@ -1,6 +1,35 @@
 'use strict'
 
 var gImgs;
+var gMeme = {
+    selectedImgId: undefined,
+    txts: [
+        {
+            line: '',
+            fontSize: 15,
+            fontFamily: 'sans-serif',
+            align: 'left',
+            fillColor: '#FFFFFF',
+            strokeColor: '#000000',
+            shadowOffsetX: 0,
+            shadowOffsetY: 0,
+            shadowBlur: 0,
+            shadowColor: 'rgba(0,0,0,0)',
+        },
+        {
+            line: '',
+            fontSize: 15,
+            fontFamily: 'sans-serif',
+            align: 'left',
+            fillColor: '#FFFFFF',
+            strokeColor: '#000000',
+            shadowOffsetX: 0,
+            shadowOffsetY: 0,
+            shadowBlur: 0,
+            shadowColor: 'rgba(0,0,0,0)',
+        }
+    ]
+}
 
 
 
@@ -43,21 +72,58 @@ function getImgs() {
     var currFilter = ($('.filter').val())
     if (currFilter === '') return gImgs;
     else return gImgs.filter(currImg => {
-        return  (currImg.keywords.some (keyWord => {
+        return (currImg.keywords.some(keyWord => {
             return keyWord === currFilter
-    }))
+        }))
     })
 }
 
-
-   
-
-function updateContext() {
-    gCtx.shadowColor = gText.shadowColor
-    gCtx.shadowOffsetX = gText.shadowOffsetX
-    gCtx.shadowOffsetY = gText.shadowOffsetY
-    gCtx.shadowBlur = gText.shadowBlur
-    gCtx.font = `${gText.fontSize}px ${gText.fontFamily}`
-    gCtx.fillStyle = gText.fillColor
-    gCtx.strokeStyle = gText.strokeColor
+function setMemeByImgId(imgId) {
+    currImg = gImgs.find(img => {
+        return (+(img.id) === imgId);
+    })
+    gMeme.selectedImgId = currImg.id;
 }
+
+function getMeme(){
+    return gMeme;
+}
+
+function addText(txtLoc ,value){
+    gMeme.txts[txtLoc].line = value;
+}
+
+function updateMemeShadow(){
+    gMeme.shadowOffsetX = 5
+    gMeme.shadowOffsetY = 5
+    gMeme.shadowBlur = 1
+    gMeme.shadowColor = 'rgba(0,0,0,0.4)'
+}
+
+function addShadow(){
+    gMeme.shadowOffsetX = 5
+    gMeme.shadowOffsetY = 5
+    gMeme.shadowBlur = 1
+    gMeme.shadowColor = 'rgba(0,0,0,0.4)'
+}
+
+function cancelShadow(){
+    gMeme.shadowOffsetX = 0
+    gMeme.shadowOffsetY = 0
+    gMeme.shadowBlur = 0
+    gMeme.shadowColor = 'rgba(0,0,0,0)'
+}
+
+function changeFillColor(color){
+    gMeme.fillColor = color;
+}
+
+function changeStrokeColor(color){
+    gMeme.strokeColor = color;
+}
+
+function  changeFontSize(fontSize){
+    gMeme.fontSize = fontSize;
+}
+
+

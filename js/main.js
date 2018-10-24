@@ -4,24 +4,13 @@ var gScreenSizes = {};
 var gCanvas
 var gCtx
 var currImg
-var gText = {}
+var meme = {}
+
 
 function init() {
     gScreenSizes = getScreenSizes()
     // gMeme will include gTeaxt and currImg both will be created in service
-    // gMeme = createMeme()
-    gText = {
-        topText: '',
-        botText: '',
-        fontSize: 15,
-        fillColor: '#FFFFFF',
-        fontFamily: 'sans-serif',
-        strokeColor: '#000000',
-        shadowOffsetX: 0,
-        shadowOffsetY: 0,
-        shadowBlur: 0,
-        shadowColor: 'rgba(0,0,0,0)',
-    }
+    //
     createImgs()
     renderImgs();
     initCanvas()
@@ -42,24 +31,25 @@ function renderImgs() {
     var strHtmls = ''
     for (let i = 0; i < imgs.length; i++) {
         var currImgUrl = imgs[i].url;
-        var strHtml = `<img  class = "gallery-img" src="${currImgUrl}" alt="Img Here" onclick = "onGalleryImgClick(this)">`;
+        var currImgId = imgs[i].id;
+        var strHtml = `<img  class = "gallery-img" src="${currImgUrl}" alt="Img Here" onclick = "onGalleryImgClick(this, ${currImgId})">`;
         strHtmls += strHtml;
     }
     elImgsContainer.innerHTML = strHtmls;
 }
 
-function onchangeFilter(){
+function onchangeFilter() {
     renderImgs()
 }
 
-    
 
+function onGalleryImgClick(elImg, imgId) {
+    setMemeByImgId(imgId)
 
-function onGalleryImgClick(elImg) {
     toggleBtn('.btn-download')
     toggleBtn('.btn-back')
     toggleModal()
-    
+
     currImg = createImg(elImg.src)
     setCanvasSize(elImg)
     drawImage(currImg)
@@ -79,7 +69,7 @@ function toggleModal() {
 
 function toggleBtn(selector) {
     $(selector).fadeToggle(300)
-    $(selector).css('display','inline-block')
+    $(selector).css('display', 'inline-block')
 }
 
 function createImg(imgSrc) {
@@ -97,7 +87,7 @@ function setCanvasSize() {
     } else if (window.innerWidth > 700) {
         gCanvas.width = 350
         gCanvas.height = 350
-        
+
     } else {
         gCanvas.width = window.innerWidth
         gCanvas.height = window.innerWidth
@@ -108,59 +98,54 @@ function drawImage(img) {
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
 }
 
-function onTxtChange(elInput) {
-    var id = elInput.id
-    var text = elInput.value
-    if (id === 'top-txt') {
-        gText.topText = text
-        drawText()
-    } else {
-        gText.botText = text
-        drawText()
-    }
-}
-
-function onShadowChange(isChecked) {
-    if (isChecked) {
-        gText.shadowColor = 'rgba(0,0,0,0.4)'
-        gText.shadowBlur = 1
-        gText.shadowOffsetX = 5
-        gText.shadowOffsetY = 5
-    } else {
-        gText.shadowColor = 'rgba(0,0,0,0)'
-        gText.shadowBlur = 0
-        gText.shadowOffsetX = 0
-        gText.shadowOffsetY = 0
-    }
+function onTxtChange(txtLoc ,value) {
+    addText(txtLoc, value);
     drawText()
 }
 
 function drawText() {
+    meme = getMeme();
+
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
     drawImage(currImg)
-    updateContext()
-    
-    
-    gCtx.fillText(gText.topText, 100, 100)
-    gCtx.strokeText(gText.topText, 100, 100)
-    gCtx.fillText(gText.botText, 100, 300)
-    gCtx.strokeText(gText.botText, 100, 300)
+    setTextStyle(meme)
+
+    // draws the text in the canvas
+    gCtx.fillText(meme.txts[0].line, 100, 100)
+    gCtx.strokeText(meme.txts[0].line, 100, 100)
+    gCtx.fillText(meme.txts[1].line, 100, 300)
+    gCtx.strokeText(meme.txts[1].line, 100, 300)
 }
 
+function setTextStyle(meme) {
+    gCtx.font = `${meme.fontSize}px ${meme.fontFamily}`
+    gCtx.fillStyle = meme.fillColor
+    gCtx.strokeStyle = meme.strokeColor
 
-function onFillColorChange(color) {
-    gText.fillColor = color
+    gCtx.shadowOffsetX = meme.shadowOffsetX
+    gCtx.shadowOffsetY = meme.shadowOffsetY
+    gCtx.shadowBlur = meme.shadowBlur
+    gCtx.shadowColor = meme.shadowColor
+}
+
+function onShadowChange(isChecked) {
+    if (isChecked) addShadow();
+    else cancelShadow()
     drawText()
 }
 
+function onFillColorChange(color) {
+    changeFillColor(color)
+    drawText()
+}
 
 function onStrokeColorChange(color) {
-    gText.strokeColor = color
-    drawText() 
+    changeStrokeColor(color)
+    drawText()
 }
 
 function onFontSizeChange(fontSize) {
-    gText.fontSize = fontSize;
+    changeFontSize(fontSize)
     drawText()
 }
 
@@ -168,14 +153,14 @@ function onFontSizeBtnMinus() {
     var fontSize = +($('.input-font-size').val())
     if (fontSize < 0) return;
     $('.input-font-size').val(fontSize - 1)
-    gText.fontSize = fontSize;
+    changeFontSize(fontSize)
     drawText()
 }
 
 function onFontSizeBtnPlus() {
     var fontSize = +($('.input-font-size').val())
     $('.input-font-size').val(fontSize + 1)
-    gText.fontSize = fontSize;
+    changeFontSize(fontSize)
     drawText()
 }
 // if isYairConfirm()
@@ -194,14 +179,14 @@ function onFontSizeBtnPlus() {
 //  give range initial val 0
 // make it change the model and drawText 
 
-function onRangeColorChange(decStr,isFillColor) {
+function onRangeColorChange(decStr, isFillColor) {
     var hexStr = getHex(decStr)
     if (isFillColor === 'fill') {
         var elRangeContainer = document.querySelector('#fill-range-container')
-        gText.fillColor = hexStr
+        meme.fillColor = hexStr
     } else {
         var elRangeContainer = document.querySelector('#stroke-range-container')
-        gText.strokeColor = hexStr
+        meme.strokeColor = hexStr
     }
     elRangeContainer.style.backgroundColor = hexStr
     drawText()
