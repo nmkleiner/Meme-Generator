@@ -53,8 +53,6 @@ function onGalleryImgClick(elImg, imgId) {
 }
 
 function onBackBtn() {
-    toggleBtn('.btn-download')
-    toggleBtn('.btn-back')
     toggleModal()
 }
 
@@ -146,35 +144,13 @@ function onFontSizeChange(fontSize) {
     drawText()
 }
 
-function onFontSizeBtnMinus() {
+function onFontSizeClick(num) {
     var fontSize = +($('.input-font-size').val())
     if (fontSize < 0) return;
-    $('.input-font-size').val(fontSize - 1)
-    changeFontSize(fontSize)
+    $('.input-font-size').val(fontSize + num)
+    gText.fontSize = fontSize;
     drawText()
 }
-
-function onFontSizeBtnPlus() {
-    var fontSize = +($('.input-font-size').val())
-    $('.input-font-size').val(fontSize + 1)
-    changeFontSize(fontSize)
-    drawText()
-}
-// if isYairConfirm()
-// function onFontSizeClick(num) {
-//     var fontSize = +($('.input-font-size').val())
-//     if (fontSize < 0) return;
-//     $('.input-font-size').val(fontSize + num)
-//     gText.fontSize = fontSize;
-//     drawText()
-// }
-
-// make this work on mousemove while mousedown:
-// mouse down -> add event mousemove
-// mouse up -> remove event mousemove
-// mousemove -> onRangeColorChange
-//  give range initial val 0
-// make it change the model and drawText 
 
 function onRangeColorChange(decStr, isFillColor) {
     var hexStr = getHex(decStr)

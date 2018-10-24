@@ -17,7 +17,7 @@
         <nav>
             <button class="btn btn-primary">button </button>
 
-            <input class="filter" list="keywords" value="" onchange = "onchangeFilter()">
+            <input class="filter" list="keywords" value="" onchange="onchangeFilter()">
             <datalist id="keywords">
                 <option value="Happy">
                 <option value="Crazy">
@@ -27,12 +27,6 @@
             </datalist>
 
         </nav>
-        <button class="btn btn-back btn-primary text-dark" onclick="onBackBtn()">
-            <i class="fas fas-inverse fa-arrow-circle-left"></i>
-        </button>
-        <a class="btn btn-download btn-success" onclick="onDownload(this)">
-            <i class="fas fa-download"></i>
-        </a>
     </header>
 
     <div class="imgs-container d-flex flex-wrap ">
@@ -40,7 +34,7 @@
     </div>
 
     <!-- canvas modal -->
-    <div class="modal flex-column justify-content-center">
+    <div class="modal flex-column justify-content-between">
         <canvas width="100" height="100" id="canvas">Please upgrade your browser.</canvas>
         <div class="inputs-container d-flex justify-content-center">
             <input type="text" id="top-txt" onkeydown="onTxtChange(0, this.value)" placeholder="Top Caption">
@@ -79,13 +73,67 @@
 
 
 
+        <header class="d-flex justify-content-start">
+            <button class="btn btn-back btn-lg" onclick="onBackBtn()">
+                <i class="fas fa-2x fa-inverse fa-arrow-circle-left"></i>
+            </button>
+            <a class="btn btn-download btn-lg" onclick="onDownload(this)">
+                <i class="fas fa-2x fa-inverse fa-download"></i>
+            </a>
+        </header>
+
+        <canvas width="100" height="100" id="canvas">Please upgrade your browser.</canvas>
+
+        <footer class="d-flex flex-column">
+            <div class="inputs-container d-flex flex-column">
+                <input type="text" class="" id="top-txt" oninput="onTxtChange(0,this.value)" placeholder="Top Caption">
+                <input type="text" id="bot-txt" oninput="onTxtChange(1,this.value)" placeholder="Bottom Caption">
+            </div>
+            <div class="font-size-group d-flex justify-content-center">
+                <span class="font-size">Font Size:</span>
+                <span class="font-size-group-btn">
+                    <button type="button" class="btn btn-default btn-number" onclick="onFontSizeChange(-1)">
+                        <span class="glyphicon glyphicon-minus">-</span>
+                    </button>
+                </span>
+                <input type="number" class="form-control input-font-size" value="15" min="0" oninput="onFontSizeChange(this.value)">
+                <span class="font-group-btn">
+                    <button type="button" class="btn btn-default btn-number" onclick="onFontSizeChange(1)">
+                        <span class="glyphicon glyphicon-plus">+</span>
+                    </button>
+                </span>
+            </div>
+            <div class="range-container">
+                <input type="range" value="0" min="0" max="16777215" class="color-range stroke-color-range" oninput="onRangeColorChange(this.value,'stroke')">
+            </div>
+            <div class="range-container">
+                <input type="range" value="16777215" min="0" max="16777215" class="color-range fill-color-range"
+                    oninput="onRangeColorChange(this.value,'fill')">
+            </div>
+            <div class="color-choose-container">
+                <input type="color" class="color-choose">
+            </div>
+            <div class="color-choose-container">
+                <input type="color" class="color-choose">
+            </div>
+            <input type="checkbox" class="shadow" id="shadow-choose" onchange="onShadowChange(this.checked)">
+        </footer>
 
 
-    <script src="lib/jquery/jquery.js"></script>
-    <script src="lib/bootstrap/js/bootstrap.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/service.js"></script>
-    <script src="js/main.js"></script>
+        <!-- what's in here? -->
+        <!-- <footer>
+            footer
+        </footer> -->
+
+
+
+
+
+        <script src="lib/jquery/jquery.js"></script>
+        <script src="lib/bootstrap/js/bootstrap.js"></script>
+        <script src="js/utils.js"></script>
+        <script src="js/service.js"></script>
+        <script src="js/main.js"></script>
 </body>
 
 </html>
