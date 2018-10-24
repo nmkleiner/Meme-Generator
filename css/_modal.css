@@ -18,8 +18,8 @@
 }
 
 .caption{
-width: 100vw;
-/* max-width: 452px; */
+    width: 100vw;
+    /* max-width: 452px; */
 }
 
 .btn-download, .btn-back {
@@ -68,7 +68,7 @@ canvas{
     }
     .caption{
         width: 452px;
-        }
+    }
     
     .color-range {
         width: 100%;    
@@ -76,9 +76,8 @@ canvas{
     }
 }
 
-@media (min-width: 900px){
+@media (min-width: 1000px){
     .control-box{
         flex-direction: column;
     }
-   
 }

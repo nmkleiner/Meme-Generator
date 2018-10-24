@@ -29,7 +29,7 @@
         </nav>
     </header>
 
-    <div class="imgs-container d-flex flex-wrap ">
+    <div class="imgs-container center d-flex flex-wrap ">
         <!-- imgs -->
     </div>
 
@@ -75,10 +75,10 @@
                     oninput="onRangeColorChange(this.value,'fill')">
             </div>
             <div class="color-choose-container">
-                <input type="color" class="color-choose">
+                <input type="color" class="stroke-color color-choose" oninput="onStrokeColorChange(this.value)">
             </div>
             <div class="color-choose-container">
-                <input type="color" class="color-choose">
+                <input type="color" class="fill-color color-choose" oninput="onFillColorChange(this.value)">
             </div>
             <div class="top-or-bot-caption-buttons d-flex">
                 <input type="radio" name="caption-buttons" value="top" onchange="onChooseCaption([0,0])"> Top Caption
