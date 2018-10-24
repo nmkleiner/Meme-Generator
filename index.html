@@ -38,25 +38,56 @@
         <!-- MODAL HEADER -->
         <header class="modal-top-container d-flex justify-content-start">
             <button class="btn btn-back btn-md" onclick="onBackBtn()">
-                <i class="fas fa-2x fa-inverse fa-arrow-circle-left"></i>
-            </button>
-            <a class="btn btn-download btn-md" onclick="onDownload(this)">
-                <i class="fas fa-2x fa-inverse fa-download"></i>
-            </a>
-            <button class="btn btn-md">
-                <i class="fab fa-2x fa-inverse fa-facebook-square"></i>
+                <i class="fas fa-2x fa-inverse fa-arrow-circle-left"></i> <span class="button-text">Back</span>
             </button>
         </header>
 
         <!-- MODAL MID CONTAINER (CANVAS & CAPTIONS) -->
-        <div class="mid-and-bot-container">
+        <div class="modal-mid-container d-flex flex-column">
+            <input type="text" class="caption" id="top-txt" oninput="onTxtChange(0,this.value)" placeholder="Top Caption">
+            <canvas width="100" height="100" id="canvas">Please upgrade your browser.</canvas>
+            <input type="text" class="caption" id="bot-txt" oninput="onTxtChange(1,this.value)" onfocus="onTxtFocus(1)"
+                placeholder="Bottom Caption">
+        </div>
+        <!-- MODAL BOT CONTAINER (CONTROL-BOX)  -->
+        <div class="modal-bot-container control-box d-flex flex-column justify-content-center">
+            <!-- CONTROL BOX TOP ROW -->
+            <div class="control-box-top-row d-flex flex-row justify-content-sm-between justify-content-md-around">
 
-            <div class="modal-mid-container d-flex flex-column">
-                <input type="text" class="caption" id="top-txt" oninput="onTxtChange(0,this.value)" placeholder="Top Caption">
-                <canvas width="100" height="100" id="canvas">Please upgrade your browser.</canvas>
-                <input type="text" class="caption" id="bot-txt" oninput="onTxtChange(1,this.value)" onfocus="onTxtFocus(1)"
-                    placeholder="Bottom Caption">
+                <div class="shadow-box">
+                    <input type="checkbox" id="checkbox1" onchange="onShadowChange(this.checked)" />
+                    <label for="checkbox1">Shadow<span></span></label>
+                </div>
+
+                <div class="font-size-group d-flex">
+                    <span class="font-size-span">Font Size:</span>
+                    <span class="font-size-group-btn">
+                        <button type="button" class="btn btn-default btn-number" onclick="onFontSizeClick(-1)">
+                            <span class="glyphicon glyphicon-minus">-</span>
+                        </button>
+                    </span>
+                    <input type="number" class="form-control input-font-size" value="45" min="0" oninput="onFontSizeChange(this.value)">
+                    <span class="font-group-btn">
+                        <button type="button" class="btn btn-default btn-number" onclick="onFontSizeClick(1)">
+                            <span class="glyphicon glyphicon-plus">+</span>
+                        </button>
+                    </span>
+                </div>
             </div>
+
+
+            <!-- CONTROL BOX BOT ROW -->
+            <div class="control-box-bot-row d-flex flex-column justify-content-between">
+
+                <!-- color range for sm, md screen -->
+                <div id="stroke-range-container" class="range-container">
+                    <input type="range" step="5" value="0" min="0" max="16777215" class="color-range stroke-color-range"
+                        oninput="onRangeColorChange(this.value,'stroke')">
+                </div>
+                <div id="fill-range-container" class="range-container">
+                    <input type="range" step="5" value="16777215" min="0" max="16777215" class="color-range fill-color-range"
+                        oninput="onRangeColorChange(this.value,'fill')">
+                </div>
 
 
             <!-- MODAL BOT CONTAINER (CONTROL-BOX)  -->
@@ -114,26 +145,19 @@
                     <div id="fill-range-container" class="range-container">
                         <button class="btn btn-sm"></button>
                     </div>
-                    <!-- color range for sm, md screen -->
-                    <!-- <div id="stroke-range-container" class="range-container">
-                        <input type="range" step="5" value="0" min="0" max="16777215" class="color-range stroke-color-range"
-                            oninput="onRangeColorChange(this.value,'stroke')">
-                    </div>
-                    <div id="fill-range-container" class="range-container">
-                        <input type="range" step="5" value="16777215" min="0" max="16777215" class="color-range fill-color-range"
-                            oninput="onRangeColorChange(this.value,'fill')">
-                    </div>
-
-                    color choose for lg screen
-                    <div class="color-choose-container">
-                        <input type="color" class="stroke-color color-choose" oninput="onStrokeColorChange(this.value)">
-                    </div>
-                    <div class="color-choose-container">
-                        <input type="color" class="fill-color color-choose" oninput="onFillColorChange(this.value)">
-                    </div> -->
 
                 </div>
             </div>
+        </div>
+        <div class="save-and-share-buttons d-flex justify-content-between">
+            <a class="btn btn-download btn-md" onclick="onDownload(this)">
+                <i class="fas fa-2x fa-inverse fa-download"></i>
+                <span class="button-text">Download</span>
+            </a>
+            <button class="btn btn-md">
+                <i class="fab fa-2x fa-inverse fa-facebook-square"></i>
+                <span class="button-text">Share</span>
+            </button>
         </div>
     </div>
 

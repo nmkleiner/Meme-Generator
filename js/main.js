@@ -5,7 +5,6 @@ var gCanvas
 var gCtx
 var gCurrImg
 var gCurrTxtLoc
-var meme = {}
 
 
 function init() {
@@ -95,7 +94,7 @@ function onTxtFocus(txtLoc) {
 }
 
 function renderCanvas() {
-    meme = getMeme();
+    var meme = getMeme();
 
     // draw img
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
