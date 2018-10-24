@@ -1,16 +1,21 @@
 .imgs-container{
     border: solid black 1px;
     background-image: linear-gradient(rgb(0, 0, 0), rgb(206, 206, 206));
+    justify-content: space-evenly;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    margin: 0 auto;
 }
 
 .gallery-img{
-    width: 23vw;
-    height: 23vw;
+    width: 48vw;
+    height: 48vw;
     object-fit: cover;
-    margin: 1vh 0px 0px 1vw;
+    margin: 0.5vh 0px 0px;
     
     transition: 0.6s;
 }
+
 
 .gallery-img:hover{
     box-shadow: 0px 0px 12px 7px #000000;
@@ -18,3 +23,22 @@
     z-index: 1;
 }
 
+@media (min-width: 768px) {
+    .gallery-img{
+        width: 32vw;
+        height: 32vw;
+    }   
+}
+
+@media (min-width: 1000px) {
+    .gallery-img{
+        width: 245px;
+        height: 245px;
+    }
+
+    .imgs-container {
+        max-width: 1000px;
+    }
+
+
+}

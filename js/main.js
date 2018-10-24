@@ -77,11 +77,11 @@ function setCanvasSize() {
     // innerHeight ~ innerWidth/2!!!
     // works fine for now, need to check it thoroughly
     if (window.innerWidth > 900) {
-        gCanvas.width = 450
-        gCanvas.height = 450
+        gCanvas.width = 500
+        gCanvas.height = 500
     } else if (window.innerWidth > 700) {
-        gCanvas.width = 350
-        gCanvas.height = 350
+        gCanvas.width = 500
+        gCanvas.height = 500
 
     } else {
         gCanvas.width = window.innerWidth
@@ -145,6 +145,7 @@ function onFontSizeChange(fontSize) {
 }
 
 function onFontSizeClick(num) {
+    console.log(num)
     var fontSize = +($('.input-font-size').val())
     if (fontSize < 0) return;
     $('.input-font-size').val(fontSize + num)
