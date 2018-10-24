@@ -5,6 +5,7 @@ var gCanvas
 var gCtx
 var gCurrImg
 var gCurrTxtLoc
+var gFillOrStroke = 'fill';
 
 
 function init() {
@@ -127,15 +128,16 @@ function onShadowChange(isChecked) {
     renderCanvas()
 }
 
-function onFillColorChange(color) {
-    changeFillColor(color, gCurrTxtLoc)
+function onFillOrStrokeChange(fillOrStroke){
+    gFillOrStroke = (fillOrStroke === 'stroke') ?  'stroke': 'fill';
+ 
+}
+function onColorChange(color) {
+    (gFillOrStroke === 'stroke') ? changeStrokeColor(color, gCurrTxtLoc) : changeFillColor(color, gCurrTxtLoc);
     renderCanvas()
 }
 
-function onStrokeColorChange(color) {
-    changeStrokeColor(color, gCurrTxtLoc)
-    renderCanvas()
-}
+
 
 function onFontSizeChange(fontSize) {
     changeFontSize(fontSize, gCurrTxtLoc)
