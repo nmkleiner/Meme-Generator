@@ -148,21 +148,22 @@ function onFontSizeClick(num) {
     console.log(num)
     var fontSize = +($('.input-font-size').val())
     if (fontSize < 0) return;
-    $('.input-font-size').val(fontSize + num)
-    gText.fontSize = fontSize;
+    fontSize = fontSize + num
+    $('.input-font-size').val(fontSize)
+    changeFontSize(fontSize)
     drawText()
 }
 
 function onRangeColorChange(decStr, isFillColor) {
-    var hexStr = getHex(decStr)
+    var color = getHex(decStr)
     if (isFillColor === 'fill') {
         var elRangeContainer = document.querySelector('#fill-range-container')
-        meme.fillColor = hexStr
+        changeFillColor(color)
     } else {
         var elRangeContainer = document.querySelector('#stroke-range-container')
-        meme.strokeColor = hexStr
+        changeStrokeColor(color)
     }
-    elRangeContainer.style.backgroundColor = hexStr
+    elRangeContainer.style.backgroundColor = color
     drawText()
 }
 
