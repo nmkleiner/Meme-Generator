@@ -35,6 +35,43 @@
 
     <!-- canvas modal -->
     <div class="modal flex-column justify-content-between">
+        <canvas width="100" height="100" id="canvas">Please upgrade your browser.</canvas>
+        <div class="inputs-container d-flex justify-content-center">
+            <input type="text" id="top-txt" onkeydown="onTxtChange(0, this.value)" placeholder="Top Caption">
+            <input type="text" id="bot-txt" onkeydown="onTxtChange(1 ,this.value)" placeholder="Bottom Caption">
+
+        </div>
+
+        <!-- control box -->
+        <div class="font-size-group d-flex justify-content-center">
+            <span class="font-size">Font Size:</span>
+            <span class="font-size-group-btn">
+                <button type="button" class="btn btn-default btn-number" onclick="onFontSizeBtnMinus()">
+                    <span class="glyphicon glyphicon-minus">-</span>
+                </button>
+            </span>
+            <input type="number" class="form-control input-font-size" value="15" min="0" oninput="onFontSizeChange(this.value)">
+            <span class="font-group-btn">
+                <button type="button" class="btn btn-default btn-number" onclick="onFontSizeBtnPlus()">
+                    <span class="glyphicon glyphicon-plus">+</span>
+                </button>
+            </span>
+        </div>
+        <div id="stroke-range-container" class="range-container">
+            <input type="range" value="0" min="0" max="16777215" class="color-range stroke-color-range" oninput="onRangeColorChange(this.value,'stroke')">
+        </div>
+        <div id="fill-range-container" class="range-container">
+            <input type="range" value="16777215" min="0" max="16777215" class="color-range fill-color-range" oninput="onRangeColorChange(this.value,'fill')">
+        </div>
+        <input type="checkbox" class="shadow" id="shadow-choose" onchange="onShadowChange(this.checked)">
+    </div>
+
+
+    <footer>
+        footer
+    </footer>
+
+
 
         <header class="d-flex justify-content-start">
             <button class="btn btn-back btn-lg" onclick="onBackBtn()">
