@@ -6,8 +6,8 @@ var gMeme = {
     txts: [
         {
             line: '',
-            fontSize: 15,
-            fontFamily: 'sans-serif',
+            fontSize: 45,
+            fontFamily: 'Impact, Haettenschweiler, Arial Narrow Bold, sans-serif',
             align: 'left',
             fillColor: '#FFFFFF',
             strokeColor: '#000000',
@@ -18,8 +18,8 @@ var gMeme = {
         },
         {
             line: '',
-            fontSize: 15,
-            fontFamily: 'sans-serif',
+            fontSize: 45,
+            fontFamily: 'Impact, Haettenschweiler, Arial Narrow Bold, sans-serif',
             align: 'left',
             fillColor: '#FFFFFF',
             strokeColor: '#000000',

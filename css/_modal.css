@@ -13,7 +13,13 @@
     padding: 5px;
 }
 
-.inputs-container{
+.modal header .btn {
+    border-radius: 50%;
+    background-color: transparent;
+    margin: 0 10px;
+}
+
+.modal-mid-container{
     align-items: center;
 }
 
@@ -22,22 +28,37 @@
     /* max-width: 452px; */
 }
 
-.modal header .btn {
-    border-radius: 50%;
-    background-color: transparent;
-    margin: 0 10px;
-}
-
 canvas {
     display: block;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
 
+.control-box{
+    width: 100%;
+    flex-direction: row;
+    padding: 10px 5px 10px;
+}
+
+/* .shadow-checkbox {
+    display: none;
+} */
 .range-container {
-    width: 40%;
+    width: 90%;
+    align-self: center;
+}
+
+
+.font-size-span {
+    color: white;
+    justify-self: flex-end;
 }
 
 .input-font-size {
     width: 80px;
+}
+
+.font-size{
+    color: white;
 }
 /* color range shows in sm screen */
 /* color choose shows in lg screen */
@@ -49,9 +70,6 @@ canvas {
     display: none;
 }
 
-.control-box{
-    flex-direction: row;
-}
 
 .shadow{
     color: aliceblue;
@@ -63,20 +81,24 @@ canvas {
 @media (min-width: 768px) {
     
     .caption{
-        width: 452px;
+        width: 600px;
     }
     
 }
 
 @media (min-width: 1000px){
+    .caption{
+        width: 500px;
+    }
+
     .control-box{
         flex-direction: column;
     }
-
+    
     .color-range {
         display: none;
     }
-
+    
     .color-choose {
         display: block;
     }

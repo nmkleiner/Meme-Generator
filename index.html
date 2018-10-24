@@ -49,7 +49,7 @@
         </header>
 
 
-        <div class="inputs-container d-flex flex-column">
+        <div class="modal-mid-container d-flex flex-column">
             <input type="text" class="caption" id="top-txt" oninput="onTxtChange(0,this.value)" placeholder="Top Caption">
             <canvas width="100" height="100" id="canvas">Please upgrade your browser.</canvas>
             <input type="text" class="caption" id="bot-txt" oninput="onTxtChange(1,this.value)" placeholder="Bottom Caption">
@@ -57,21 +57,21 @@
         <!-- control box - style choose  -->
         <div class="control-box d-flex flex-column">
 
-            <div class="control-box-top-row d-flex flex-row">
+            <div class="control-box-top-row d-flex flex-row justify-content-between">
 
                 <div class="shadow-box">
-                    <input type="checkbox" class="shadow" id="shadow-choose" onchange="onShadowChange(this.checked)">
-                    <span class="shadow">Shadow</span>
+                    <input type="checkbox" id="checkbox1" />
+                    <label for="checkbox1">Shadow<span></span></label>
                 </div>
 
-                <div class="font-size-group d-flex justify-content-center">
-                    <span class="font-size">Font Size:</span>
+                <div class="font-size-group d-flex">
+                    <span class="font-size-span">Font Size:</span>
                     <span class="font-size-group-btn">
                         <button type="button" class="btn btn-default btn-number" onclick="onFontSizeClick(-1)">
                             <span class="glyphicon glyphicon-minus">-</span>
                         </button>
                     </span>
-                    <input type="number" class="form-control input-font-size" value="15" min="0" oninput="onFontSizeChange(this.value)">
+                    <input type="number" class="form-control input-font-size" value="45" min="0" oninput="onFontSizeChange(this.value)">
                     <span class="font-group-btn">
                         <button type="button" class="btn btn-default btn-number" onclick="onFontSizeClick(1)">
                             <span class="glyphicon glyphicon-plus">+</span>
@@ -80,8 +80,8 @@
                 </div>
             </div>
 
-            
-            <div class="control-box-mid-row d-flex justify-content-between">
+
+            <div class="control-box-mid-row d-flex flex-column justify-content-between">
 
                 <!-- color range for sm, md screen -->
                 <div id="stroke-range-container" class="range-container">
@@ -92,7 +92,7 @@
                     <input type="range" step="5" value="16777215" min="0" max="16777215" class="color-range fill-color-range"
                         oninput="onRangeColorChange(this.value,'fill')">
                 </div>
-                
+
                 <!-- color choose for lg screen -->
                 <div class="color-choose-container">
                     <input type="color" class="stroke-color color-choose" oninput="onStrokeColorChange(this.value)">
@@ -102,30 +102,6 @@
                 </div>
 
             </div>
-            <!-- radio buttons -->
-            <div class="control-box-bot-row d-flex ">
-
-                <!-- <input type="radio" name="caption-buttons" value="top" onchange="onChooseCaption([0,0])"> Top Caption
-                <input type="radio" name="caption-buttons" value="bottom" onchange="onChooseCaption([1,1])"> Bottom
-                Caption
-                <input type="radio" name="caption-buttons" value="both" onchange="onChooseCaption([0,1])"> Both
-                Captions -->
-
-                <div>
-                    <input type="radio" id="radio01" name="caption-buttons" value="top" onchange="onChooseCaption([0,0])" />
-                    <label for="radio01"><span></span>Top caption</label>
-                </div>
-
-                <div>
-                    <input type="radio" id="radio02" name="caption-buttons" value="bottom" onchange="onChooseCaption([1,1])" />
-                    <label for="radio02"><span></span>Bottom caption</label>
-                </div>
-                <div>
-                    <input type="radio" id="radio03" name="caption-buttons" value="both" onchange="onChooseCaption([0,1])" />
-                    <label for="radio03"><span></span>Both captions</label>
-                </div>
-            </div>
-            <!-- shadow checkbox -->
         </div>
     </div>
 
