@@ -3,9 +3,20 @@
     background-color: black;
     z-index: 1;
     position: fixed;
-    top: 6vh;
-    height: 94vh;
+    height: 100vh;
     width: 100%;
+}
+
+.modal header {
+    position: relative;
+    padding: 20px 0 20px;
+}
+
+.btn-download, .btn-back {
+    border-radius: 50%;
+    background-color: transparent;
+    margin: 0 10px;
+    align-self: center;
 }
 
 canvas{
@@ -24,7 +35,16 @@ canvas{
 
 .color-range {
     width: 100%;
-    display: block;
+    display: none;
 }
 
-
+@media (min-width: 768px) {
+    .color-choose {
+        display: none;
+    }
+    
+    .color-range {
+        width: 100%;    
+        display: block;
+    }
+}

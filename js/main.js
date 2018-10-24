@@ -56,8 +56,6 @@ function onchangeFilter(){
 
 
 function onGalleryImgClick(elImg) {
-    toggleBtn('.btn-download')
-    toggleBtn('.btn-back')
     toggleModal()
     
     currImg = createImg(elImg.src)
@@ -66,8 +64,6 @@ function onGalleryImgClick(elImg) {
 }
 
 function onBackBtn() {
-    toggleBtn('.btn-download')
-    toggleBtn('.btn-back')
     toggleModal()
 }
 
@@ -164,28 +160,14 @@ function onFontSizeChange(fontSize) {
     drawText()
 }
 
-function onFontSizeBtnMinus() {
+// if isYairConfirm()
+function onFontSizeClick(num) {
     var fontSize = +($('.input-font-size').val())
     if (fontSize < 0) return;
-    $('.input-font-size').val(fontSize - 1)
+    $('.input-font-size').val(fontSize + num)
     gText.fontSize = fontSize;
     drawText()
 }
-
-function onFontSizeBtnPlus() {
-    var fontSize = +($('.input-font-size').val())
-    $('.input-font-size').val(fontSize + 1)
-    gText.fontSize = fontSize;
-    drawText()
-}
-// if isYairConfirm()
-// function onFontSizeClick(num) {
-//     var fontSize = +($('.input-font-size').val())
-//     if (fontSize < 0) return;
-//     $('.input-font-size').val(fontSize + num)
-//     gText.fontSize = fontSize;
-//     drawText()
-// }
 
 // make this work on mousemove while mousedown:
 // mouse down -> add event mousemove
