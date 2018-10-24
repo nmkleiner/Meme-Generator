@@ -76,12 +76,12 @@ function createImg(imgSrc) {
 function setCanvasSize() {
     // innerHeight ~ innerWidth/2!!!
     // works fine for now, need to check it thoroughly
-    if (window.innerWidth > 900) {
+    if (window.innerWidth > 1000) {
         gCanvas.width = 500
         gCanvas.height = 500
-    } else if (window.innerWidth > 700) {
-        gCanvas.width = 500
-        gCanvas.height = 500
+    } else if (window.innerWidth >= 768) {
+        gCanvas.width = 600
+        gCanvas.height = 600
 
     } else {
         gCanvas.width = window.innerWidth
