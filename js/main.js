@@ -61,12 +61,6 @@ function toggleModal() {
     $('.modal').css('display', 'flex')
 }
 
-
-function toggleBtn(selector) {
-    $(selector).fadeToggle(300)
-    $(selector).css('display', 'inline-block')
-}
-
 function createImg(imgSrc) {
     var img = new Image()
     img.src = imgSrc

@@ -26,33 +26,31 @@
     border-radius: 50%;
     background-color: transparent;
     margin: 0 10px;
-
 }
 
-canvas{
+canvas {
     display: block;
-    border: 1px solid black;
 }
 
 .range-container {
-    width: 50%;
+    width: 40%;
 }
 
 .input-font-size {
     width: 80px;
 }
-
+/* color range shows in sm screen */
+/* color choose shows in lg screen */
 .color-range {
     width: 100%;
+}
+
+.color-choose {
     display: none;
 }
 
 .control-box{
     flex-direction: row;
-}
-
-.top-or-bot-caption-buttons{
-    color: aliceblue;
 }
 
 .shadow{
@@ -63,21 +61,23 @@ canvas{
 
 
 @media (min-width: 768px) {
-    .color-choose {
-        display: none;
-    }
+    
     .caption{
         width: 452px;
     }
     
-    .color-range {
-        width: 100%;    
-        display: block;
-    }
 }
 
 @media (min-width: 1000px){
     .control-box{
         flex-direction: column;
+    }
+
+    .color-range {
+        display: none;
+    }
+
+    .color-choose {
+        display: block;
     }
 }
