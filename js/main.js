@@ -147,7 +147,8 @@ function onFontSizeChange(fontSize) {
 function onFontSizeClick(num) {
     var fontSize = +($('.input-font-size').val())
     if (fontSize < 0) return;
-    $('.input-font-size').val(fontSize + num)
+    fontSize = fontSize + num
+    $('.input-font-size').val(fontSize)
     changeFontSize(fontSize)
     drawText()
 }

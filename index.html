@@ -45,23 +45,24 @@
             </a>
         </header>
 
-        <canvas width="100" height="100" id="canvas">Please upgrade your browser.</canvas>
 
-        <footer class="d-flex flex-column">
-            <div class="inputs-container d-flex flex-column">
-                <input type="text" class="" id="top-txt" oninput="onTxtChange(0,this.value)" placeholder="Top Caption">
-                <input type="text" id="bot-txt" oninput="onTxtChange(1,this.value)" placeholder="Bottom Caption">
-            </div>
+        <div class="inputs-container d-flex flex-column">
+            <input type="text" class="caption" id="top-txt" oninput="onTxtChange(0,this.value)" placeholder="Top Caption">
+            <canvas width="100" height="100" id="canvas">Please upgrade your browser.</canvas>
+            <input type="text" class="caption" id="bot-txt" oninput="onTxtChange(1,this.value)" placeholder="Bottom Caption">
+        </div>
+        <footer class=" control-box d-flex flex-wrap">
+
             <div class="font-size-group d-flex justify-content-center">
                 <span class="font-size">Font Size:</span>
                 <span class="font-size-group-btn">
-                    <button type="button" class="btn btn-default btn-number" onclick="onFontSizeChange(-1)">
+                    <button type="button" class="btn btn-default btn-number" onclick="onFontSizeClick(-1)">
                         <span class="glyphicon glyphicon-minus">-</span>
                     </button>
                 </span>
                 <input type="number" class="form-control input-font-size" value="15" min="0" oninput="onFontSizeChange(this.value)">
                 <span class="font-group-btn">
-                    <button type="button" class="btn btn-default btn-number" onclick="onFontSizeChange(1)">
+                    <button type="button" class="btn btn-default btn-number" onclick="onFontSizeClick(1)">
                         <span class="glyphicon glyphicon-plus">+</span>
                     </button>
                 </span>
@@ -79,7 +80,15 @@
             <div class="color-choose-container">
                 <input type="color" class="color-choose">
             </div>
-            <input type="checkbox" class="shadow" id="shadow-choose" onchange="onShadowChange(this.checked)">
+            <div class="top-or-bot-Caption-buttons d-flex">
+                <input type="radio" value="top"> Top Caption
+                <input type="radio" value="bottom"> Bottom Caption
+                <input type="radio" value="both"> Both Captions
+            </div>
+            <div class="shadow-box">
+                <input type="checkbox" class="shadow" id="shadow-choose" onchange="onShadowChange(this.checked)">
+                <span class="shadow">Shadow</span> 
+            </div>
         </footer>
     </div>
 
