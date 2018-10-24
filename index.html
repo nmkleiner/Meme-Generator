@@ -80,10 +80,10 @@
             <div class="color-choose-container">
                 <input type="color" class="color-choose">
             </div>
-            <div class="top-or-bot-Caption-buttons d-flex">
-                <input type="radio" value="top"> Top Caption
-                <input type="radio" value="bottom"> Bottom Caption
-                <input type="radio" value="both"> Both Captions
+            <div class="top-or-bot-caption-buttons d-flex">
+                <input type="radio" name="caption-buttons" value="top" onchange="onChooseCaption([0,0])"> Top Caption
+                <input type="radio" name="caption-buttons" value="bottom" onchange="onChooseCaption([1,1])"> Bottom Caption
+                <input type="radio" name="caption-buttons" value="both" onchange="onChooseCaption([0,1])"> Both Captions
             </div>
             <div class="shadow-box">
                 <input type="checkbox" class="shadow" id="shadow-choose" onchange="onShadowChange(this.checked)">
