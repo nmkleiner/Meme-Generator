@@ -45,9 +45,6 @@ function onchangeFilter() {
 
 function onGalleryImgClick(elImg, imgId) {
     setMemeByImgId(imgId)
-
-    toggleBtn('.btn-download')
-    toggleBtn('.btn-back')
     toggleModal()
 
     currImg = createImg(elImg.src)
