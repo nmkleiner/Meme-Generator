@@ -18,7 +18,7 @@
     width: 48vw;
     height: 48vw;
     object-fit: cover;
-    margin: 0.5vh 0px 0px 0.5vw;
+    margin: 0.5vw 0px 0px 0.5vw;
     
     transition: 0.6s;
 }
@@ -42,7 +42,8 @@
         width: 240px;
         height: 240px;
     }
-
+    
+    
     .imgs-container {
         max-width: 1000px;
     }

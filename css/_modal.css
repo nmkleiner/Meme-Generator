@@ -22,7 +22,7 @@
     /* max-width: 452px; */
 }
 
-.btn-download, .btn-back {
+.modal header .btn {
     border-radius: 50%;
     background-color: transparent;
     margin: 0 10px;

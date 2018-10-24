@@ -105,9 +105,9 @@ function drawText() {
     drawImage(currImg)
     setTextStyle(meme)
 
-    // draws the text in the canvas
     gCtx.fillText(meme.txts[0].line, 100, 100)
     gCtx.strokeText(meme.txts[0].line, 100, 100)
+
     gCtx.fillText(meme.txts[1].line, 100, 300)
     gCtx.strokeText(meme.txts[1].line, 100, 300)
 }
