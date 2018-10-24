@@ -93,16 +93,11 @@ canvas {
 
 @media (min-width: 768px) {
     
+
     .caption{
         width: 600px;
     }
 
-    .modal-mid-container {
-        flex-grow: 1;
-    }
-    .modal-bot-container {
-        flex-grow: 1;
-    }
     
     .range-container {
         width: 70%;
@@ -110,6 +105,20 @@ canvas {
 }
 
 @media (min-width: 1000px){
+    .modal-mid-and-bot-container {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    .modal-mid-container {
+        flex-grow: unset;
+    }
+    .modal-bot-container {
+        flex-grow: unset;
+    }
+    
+    .control-box {
+        width: fit-content;
+    }
     .caption{
         width: 500px;
     }
