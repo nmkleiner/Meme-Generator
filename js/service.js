@@ -31,6 +31,10 @@ var gMeme = {
     ]
 }
 
+var gCaption = [0, 1];
+var gCaption1 = gMeme.txts[gCaption[0]];
+var gCaption2 = gMeme.txts[gCaption[1]];
+
 
 
 
@@ -85,45 +89,49 @@ function setMemeByImgId(imgId) {
     gMeme.selectedImgId = currImg.id;
 }
 
-function getMeme(){
+function getMeme() {
     return gMeme;
 }
 
-function addText(txtLoc ,value){
+function addText(txtLoc, value) {
     gMeme.txts[txtLoc].line = value;
 }
 
-function updateMemeShadow(){
-    gMeme.shadowOffsetX = 5
-    gMeme.shadowOffsetY = 5
-    gMeme.shadowBlur = 1
-    gMeme.shadowColor = 'rgba(0,0,0,0.4)'
+
+function addShadow() {
+    gCaption1.shadowOffsetX = gCaption2.shadowOffsetX = 5
+    gCaption1.shadowOffsetY = gCaption2.shadowOffsetY = 5
+    gCaption1.shadowBlur = gCaption2.shadowBlur = 1
+    gCaption1.shadowColor = gCaption2.shadowColor = 'rgba(0,0,0,0.4)'
 }
 
-function addShadow(){
-    gMeme.shadowOffsetX = 5
-    gMeme.shadowOffsetY = 5
-    gMeme.shadowBlur = 1
-    gMeme.shadowColor = 'rgba(0,0,0,0.4)'
+function cancelShadow() {
+    gCaption1.shadowOffsetX = gCaption2.shadowOffsetX = 5
+    gCaption1.shadowOffsetY = gCaption2.shadowOffsetY = 5
+    gCaption1.shadowBlur = gCaption2.shadowBlur = 1
+    gCaption1.shadowColor = gCaption2.shadowColor = 'rgba(0,0,0,0)'
 }
 
-function cancelShadow(){
-    gMeme.shadowOffsetX = 0
-    gMeme.shadowOffsetY = 0
-    gMeme.shadowBlur = 0
-    gMeme.shadowColor = 'rgba(0,0,0,0)'
+function changeFillColor(color) {
+    gCaption1.fillColor = gCaption2.fillColor = color;
 }
 
-function changeFillColor(color){
-    gMeme.fillColor = color;
+function changeStrokeColor(color) {
+    gCaption1.strokeColor = gCaption2.strokeColor = color;
 }
 
-function changeStrokeColor(color){
-    gMeme.strokeColor = color;
+function changeFontSize(fontSize) {
+    gCaption1.fontSize = gCaption2.fontSize = fontSize;
 }
 
-function  changeFontSize(fontSize){
-    gMeme.fontSize = fontSize;
+function setCaption(caption) {
+    gCaption = caption;
+    gCaption1 = gMeme.txts[gCaption[0]];
+    gCaption2 = gMeme.txts[gCaption[1]];
+}
+
+function getCaption() {
+    return gCaption;
 }
 
 

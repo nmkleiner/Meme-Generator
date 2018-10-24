@@ -93,7 +93,7 @@ function drawImage(img) {
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
 }
 
-function onTxtChange(txtLoc ,value) {
+function onTxtChange(txtLoc, value) {
     addText(txtLoc, value);
     drawText()
 }
@@ -112,15 +112,20 @@ function drawText() {
     gCtx.strokeText(meme.txts[1].line, 100, 300)
 }
 
-function setTextStyle(meme) {
-    gCtx.font = `${meme.fontSize}px ${meme.fontFamily}`
-    gCtx.fillStyle = meme.fillColor
-    gCtx.strokeStyle = meme.strokeColor
+function onChooseCaption(caption) {
+    setCaption(caption)
+}
 
-    gCtx.shadowOffsetX = meme.shadowOffsetX
-    gCtx.shadowOffsetY = meme.shadowOffsetY
-    gCtx.shadowBlur = meme.shadowBlur
-    gCtx.shadowColor = meme.shadowColor
+function setTextStyle(meme) {
+    var caption = getCaption()
+    var currCaption = meme.txts[caption[0]];
+    gCtx.font = `${currCaption.fontSize}px ${currCaption.fontFamily}`
+    gCtx.fillStyle = currCaption.fillColor
+    gCtx.strokeStyle = currCaption.strokeColor
+    gCtx.shadowOffsetX = currCaption.shadowOffsetX
+    gCtx.shadowOffsetY = currCaption.shadowOffsetY
+    gCtx.shadowBlur = currCaption.shadowBlur
+    gCtx.shadowColor = currCaption.shadowColor
 }
 
 function onShadowChange(isChecked) {
