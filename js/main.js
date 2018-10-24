@@ -42,6 +42,12 @@ function renderImgs() {
     elImgsContainer.innerHTML = strHtmls;
 }
 
+function onchangeFilter(){
+    renderImgs()
+}
+
+    
+
 
 function onGalleryImgClick(elImg) {
     openModal()
