@@ -14,13 +14,17 @@ canvas{
     border: 1px solid black;
 }
 
-
-.color-choose {
-    border-radius: 50%;
+.range-container {
+    width: 50%;
 }
 
-.range-container {
-    background-color: green;
+.input-font-size {
+    width: 80px;
+}
+
+.color-range {
+    width: 100%;
+    display: block;
 }
 
 

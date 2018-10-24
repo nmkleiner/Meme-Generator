@@ -13,7 +13,7 @@
 
 <body onload="init()" class="d-flex flex-column">
     <header>Meme generator
-        <button class="btn btn-back btn-primary text-dark" onclick="onBack()">
+        <button class="btn btn-back btn-primary text-dark" onclick="onBackBtn()">
             <i class="fas fas-inverse fa-arrow-circle-left"></i>
         </button>
         <a class="btn btn-download btn-success" onclick="onDownload(this)">
@@ -39,18 +39,19 @@
                     <span class="glyphicon glyphicon-minus">-</span>
                 </button>
             </span>
-            <input type="number" class="form-control input-font-size" value="15" min="0" max="30" on>
+            <input type="number" class="form-control input-font-size" value="15" min="0" oninput="onFontSizeChange(this.value)">
             <span class="font-group-btn">
                 <button type="button" class="btn btn-default btn-number" onclick="onFontSizeBtnPlus()">
                     <span class="glyphicon glyphicon-plus">+</span>
                 </button>
             </span>
         </div>
-        <div class="range-container">
-            <input type="range" min="0" max="16777215" class="color-range" id="color-range" onchange="onRangeColorChange(this.value)">
+        <div id="stroke-range-container" class="range-container">
+            <input type="range" value="0" min="0" max="16777215" class="color-range stroke-color-range" oninput="onRangeColorChange(this.value,'stroke')">
         </div>
-        <input type="color" class="color-choose" id="color-choose" onchange="onStrokeColorChange(this.value)">
-        <input type="color" class="color-choose" id="color-choose" onchange="onFillColorChange(this.value)">
+        <div id="fill-range-container" class="range-container">
+            <input type="range" value="16777215" min="0" max="16777215" class="color-range fill-color-range" oninput="onRangeColorChange(this.value,'fill')">
+        </div>
         <input type="checkbox" class="shadow" id="shadow-choose" onchange="onShadowChange(this.checked)">
     </div>
     <footer>

@@ -14,7 +14,7 @@ function init() {
         topText: '',
         botText: '',
         fontSize: 15,
-        fillColor: '#000000',
+        fillColor: '#FFFFFF',
         fontFamily: 'sans-serif',
         strokeColor: '#000000',
         shadowOffsetX: 0,
@@ -50,6 +50,8 @@ function renderImgs() {
 
 
 function onGalleryImgClick(elImg) {
+    toggleBtn('.btn-download')
+    toggleBtn('.btn-back')
     toggleModal()
     
     currImg = createImg(elImg.src)
@@ -57,17 +59,17 @@ function onGalleryImgClick(elImg) {
     drawImage(currImg)
 }
 
-function toggleModal() {
+function onBackBtn() {
     toggleBtn('.btn-download')
     toggleBtn('.btn-back')
+    toggleModal()
+}
 
+function toggleModal() {
     $('.modal').slideToggle(400)
     $('.modal').css('display', 'flex')
 }
 
-function onBack() {
-    toggleModal()
-}
 
 function toggleBtn(selector) {
     $(selector).fadeToggle(300)
@@ -81,10 +83,19 @@ function createImg(imgSrc) {
 }
 
 function setCanvasSize() {
-    // think about responsivity in here
-    // right now works for mobile
-    gCanvas.width = window.innerWidth
-    gCanvas.height = window.innerWidth
+    // innerHeight ~ innerWidth/2!!!
+    // works fine for now, need to check it thoroughly
+    if (window.innerWidth > 900) {
+        gCanvas.width = 450
+        gCanvas.height = 450
+    } else if (window.innerWidth > 700) {
+        gCanvas.width = 350
+        gCanvas.height = 350
+        
+    } else {
+        gCanvas.width = window.innerWidth
+        gCanvas.height = window.innerWidth
+    }
 }
 
 function drawImage(img) {
@@ -126,8 +137,8 @@ function drawText() {
     
     gCtx.fillText(gText.topText, 100, 100)
     gCtx.strokeText(gText.topText, 100, 100)
-    gCtx.fillText(gText.botText, 100, 600)
-    gCtx.strokeText(gText.botText, 100, 600)
+    gCtx.fillText(gText.botText, 100, 300)
+    gCtx.strokeText(gText.botText, 100, 300)
 }
 
 
@@ -140,6 +151,11 @@ function onFillColorChange(color) {
 function onStrokeColorChange(color) {
     gText.strokeColor = color
     drawText() 
+}
+
+function onFontSizeChange(fontSize) {
+    gText.fontSize = fontSize;
+    drawText()
 }
 
 function onFontSizeBtnMinus() {
@@ -169,17 +185,25 @@ function onFontSizeBtnPlus() {
 // mouse down -> add event mousemove
 // mouse up -> remove event mousemove
 // mousemove -> onRangeColorChange
- 
+//  give range initial val 0
 // make it change the model and drawText 
-function onRangeColorChange(decStr) {
+
+function onRangeColorChange(decStr,isFillColor) {
     var hexStr = getHex(decStr)
-    var $rangeContainer = $('.range-container')
-    $rangeContainer.css('background-color',hexStr)
+    if (isFillColor === 'fill') {
+        var elRangeContainer = document.querySelector('#fill-range-container')
+        gText.fillColor = hexStr
+    } else {
+        var elRangeContainer = document.querySelector('#stroke-range-container')
+        gText.strokeColor = hexStr
+    }
+    elRangeContainer.style.backgroundColor = hexStr
+    drawText()
 }
 
 
 function onDownload(elLink) {
     elLink.href = gCanvas.toDataURL()
-    elLink.download = 'my-canvas.jpg'
+    elLink.download = 'new-cool-meme.jpg'
 }
 
