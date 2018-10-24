@@ -51,3 +51,13 @@ function getImgs() {
 
 
    
+
+function updateContext() {
+    gCtx.shadowColor = gText.shadowColor
+    gCtx.shadowOffsetX = gText.shadowOffsetX
+    gCtx.shadowOffsetY = gText.shadowOffsetY
+    gCtx.shadowBlur = gText.shadowBlur
+    gCtx.font = `${gText.fontSize}px ${gText.fontFamily}`
+    gCtx.fillStyle = gText.fillColor
+    gCtx.strokeStyle = gText.strokeColor
+}

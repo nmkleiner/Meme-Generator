@@ -7,6 +7,8 @@
     <title>Meme Generator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+        crossorigin="anonymous">
 </head>
 
 <body onload="init()" class="d-flex flex-column">
@@ -25,7 +27,14 @@
             </datalist>
 
         </nav>
+        <button class="btn btn-back btn-primary text-dark" onclick="onBackBtn()">
+            <i class="fas fas-inverse fa-arrow-circle-left"></i>
+        </button>
+        <a class="btn btn-download btn-success" onclick="onDownload(this)">
+            <i class="fas fa-download"></i>
+        </a>
     </header>
+
     <div class="imgs-container d-flex flex-wrap ">
         <!-- imgs -->
     </div>
@@ -47,15 +56,20 @@
                     <span class="glyphicon glyphicon-minus">-</span>
                 </button>
             </span>
-            <input type="number" class="form-control input-font-size" value="15" min="0" max="30" on>
+            <input type="number" class="form-control input-font-size" value="15" min="0" oninput="onFontSizeChange(this.value)">
             <span class="font-group-btn">
                 <button type="button" class="btn btn-default btn-number" onclick="onFontSizeBtnPlus()">
                     <span class="glyphicon glyphicon-plus">+</span>
                 </button>
             </span>
         </div>
-        <input type="color" class="color-choose" id="color-choose" onchange="onStrokeColorChange(this.value)">
-        <input type="color" class="color-choose" id="color-choose" onchange="onFillColorChange(this.value)">
+        <div id="stroke-range-container" class="range-container">
+            <input type="range" value="0" min="0" max="16777215" class="color-range stroke-color-range" oninput="onRangeColorChange(this.value,'stroke')">
+        </div>
+        <div id="fill-range-container" class="range-container">
+            <input type="range" value="16777215" min="0" max="16777215" class="color-range fill-color-range" oninput="onRangeColorChange(this.value,'fill')">
+        </div>
+        <input type="checkbox" class="shadow" id="shadow-choose" onchange="onShadowChange(this.checked)">
     </div>
 
 
