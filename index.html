@@ -35,8 +35,8 @@
 
     <!-- canvas modal -->
     <div class="modal flex-column justify-content-between">
-
-        <header class="d-flex justify-content-start">
+<!-- MODAL HEADER -->
+        <header class="modal-top-container d-flex justify-content-start">
             <button class="btn btn-back btn-md" onclick="onBackBtn()">
                 <i class="fas fa-2x fa-inverse fa-arrow-circle-left"></i>
             </button>
@@ -48,40 +48,41 @@
             </button>
         </header>
 
-
+<!-- MODAL MID CONTAINER (CANVAS & CAPTIONS) -->
         <div class="modal-mid-container d-flex flex-column">
             <input type="text" class="caption" id="top-txt" oninput="onTxtChange(0,this.value)" placeholder="Top Caption">
             <canvas width="100" height="100" id="canvas">Please upgrade your browser.</canvas>
             <input type="text" class="caption" id="bot-txt" oninput="onTxtChange(1,this.value)" placeholder="Bottom Caption">
         </div>
-        <!-- control box - style choose  -->
-        <div class="control-box d-flex flex-column">
-
-            <div class="control-box-top-row d-flex flex-row justify-content-between">
-
-                <div class="shadow-box">
-                    <input type="checkbox" id="checkbox1" />
-                    <label for="checkbox1">Shadow<span></span></label>
-                </div>
-
-                <div class="font-size-group d-flex">
-                    <span class="font-size-span">Font Size:</span>
-                    <span class="font-size-group-btn">
-                        <button type="button" class="btn btn-default btn-number" onclick="onFontSizeClick(-1)">
-                            <span class="glyphicon glyphicon-minus">-</span>
-                        </button>
-                    </span>
-                    <input type="number" class="form-control input-font-size" value="45" min="0" oninput="onFontSizeChange(this.value)">
-                    <span class="font-group-btn">
-                        <button type="button" class="btn btn-default btn-number" onclick="onFontSizeClick(1)">
-                            <span class="glyphicon glyphicon-plus">+</span>
-                        </button>
-                    </span>
-                </div>
+        <!-- MODAL BOT CONTAINER (CONTROL-BOX)  -->
+        <div class="modal-bot-container control-box d-flex flex-column justify-content-center">
+<!-- CONTROL BOX TOP ROW -->
+<div class="control-box-top-row d-flex flex-row justify-content-sm-between justify-content-md-around">
+    
+    <div class="shadow-box">
+        <input type="checkbox" id="checkbox1" />
+        <label for="checkbox1">Shadow<span></span></label>
+    </div>
+    
+    <div class="font-size-group d-flex">
+        <span class="font-size-span">Font Size:</span>
+        <span class="font-size-group-btn">
+            <button type="button" class="btn btn-default btn-number" onclick="onFontSizeClick(-1)">
+                    <span class="glyphicon glyphicon-minus">-</span>
+                </button>
+            </span>
+            <input type="number" class="form-control input-font-size" value="45" min="0" oninput="onFontSizeChange(this.value)">
+            <span class="font-group-btn">
+                <button type="button" class="btn btn-default btn-number" onclick="onFontSizeClick(1)">
+                        <span class="glyphicon glyphicon-plus">+</span>
+                    </button>
+                </span>
             </div>
-
-
-            <div class="control-box-mid-row d-flex flex-column justify-content-between">
+        </div>
+        
+        
+        <!-- CONTROL BOX BOT ROW -->
+            <div class="control-box-bot-row d-flex flex-column justify-content-between">
 
                 <!-- color range for sm, md screen -->
                 <div id="stroke-range-container" class="range-container">
