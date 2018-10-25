@@ -76,20 +76,22 @@ function onTxtChange(txtLoc, value) {
 
 function onCanvasClick(ev) {
     var x = ev.clientX - gOffset.left;
-    console.log(x)
     var y = ev.clientY - gOffset.top;
-    
+    // update the condition to include x & xRange
+    // fix the y, not accurate enough
+    var texts = gMeme.txts
     var lineIdx = gMeme.txts.findIndex(txt => {
         return (y < txt.lineYRange[0] + 10 &&
-                y > txt.lineYRange[1] - 10)
+            y > txt.lineYRange[1] - 10)
     })
-    
-    gMeme.txts.forEach(txt => {
+    texts.forEach(txt => {
         txt.isSelected = false;
     })
-    gCurrTxtLoc = lineIdx
-
-    if (lineIdx !== -1) gMeme.txts[lineIdx].isSelected = true;
+    if (lineIdx !== -1) {
+        gCurrTxtLoc = lineIdx
+        gMeme.txts[gCurrTxtLoc].isSelected = true;
+        console.log('line ' + gCurrTxtLoc + ' selected')
+    } 
 }
 
 
@@ -98,17 +100,10 @@ function onTxtFocus(txtLoc) {
 }
 
 
-
-function onFontSizeChange(fontSize) {
-    changeFontSize(fontSize, gCurrTxtLoc)
-    updateX(0)
-    updateY(0)
-
-    renderCanvas()
-}
-
 function onFontSizeClick(fontSizeNum) {
     changeFontSize(fontSizeNum, gCurrTxtLoc)
+    updateX(0)
+    updateY(0)
     renderCanvas()
 }
 
@@ -146,6 +141,12 @@ function setCanvas() {
         gCanvas.width = 500
     } else {
         gCanvas.width = window.innerWidth
+        $('.caption').css('width','100vw')
+
+        if (window.innerHeight < window.innerWidth) {
+            gCanvas.width = 500
+            $('.caption').css('width','500px')
+        }
     }
     gCanvas.height = gCanvas.width * heightFactor
 
@@ -170,6 +171,9 @@ function renderCanvas() {
     for (let i = 0; i < meme.txts.length; i++) {
         // set Text Style
         currTxt = meme.txts[i]
+        if (currTxt.isSelected) {
+            drawFrame(i)
+        }
         lineY = currTxt.lineY;
         gCtx.font = `${currTxt.fontSize}px ${currTxt.fontFamily}`
         gCtx.fillStyle = currTxt.fillColor
@@ -188,10 +192,15 @@ function renderCanvas() {
 
 
 function onXChange(xDiff) {
-    updateX(xDiff,gCurrTxtLoc)
+    updateX(xDiff, gCurrTxtLoc)
 }
 
 function onYChange(yDiff) {
-    updateY(yDiff,gCurrTxtLoc)
+    updateY(yDiff, gCurrTxtLoc)
 }
 
+
+function drawFrame(line) {
+    var txt = gMeme.txts[line]
+    console.log(txt)
+}

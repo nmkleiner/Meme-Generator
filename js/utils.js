@@ -28,6 +28,5 @@ function toggleModal() {
 }
 
 function resetValue(el) {
-    console.log('reset')
     el.value = ''
 }

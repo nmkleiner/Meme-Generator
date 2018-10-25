@@ -166,7 +166,6 @@ function initLine() {
 }
 
 function updateX(xDiff) {
-    console.log('xDiff called')
     var txt = gMeme.txts[gCurrTxtLoc]
     if (xDiff) txt.lineX += xDiff
 
@@ -174,7 +173,6 @@ function updateX(xDiff) {
         txt.lineX - (txt.line.length * txt.fontSize * 0.5) / 2,
         txt.lineX + (txt.line.length * txt.fontSize * 0.5) / 2
     ]
-    console.log(txt.lineXRange)
 }
 
 function updateY(yDiff) {
@@ -184,5 +182,4 @@ function updateY(yDiff) {
         txt.lineY,
         txt.lineY - txt.fontSize
     ]
-    console.log(txt.lineYRange)
 }
