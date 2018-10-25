@@ -45,7 +45,7 @@
                     </li>
                 </ul>
                 <div class="form-inline my-2 my-lg-0">
-                    <input class="filter" list="keywords" value="" onclick="resetValue(this)" onchange="onchangeFilter()"
+                    <input class="category-filter" list="keywords" value="" onclick="resetValue(this)" onchange="onChangeCategory()"
                         placeholder="Choose category">
                     <datalist id="keywords">
                         <option value="All">
@@ -63,7 +63,7 @@
 
 
     <main>
-        <div class="category-filter">
+        <div class="category-container">
             Choose category:
         </div>
         <div class="imgs-container center d-flex flex-wrap "></div>

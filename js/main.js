@@ -12,9 +12,27 @@ var gFillOrStroke = 'fill';
 function init() {
     gScreenSizes = getScreenSizes()
     createImgs()
-    renderImgs();
+    renderImgs()
     initCanvas()
+    RenderCategoryContainer()
 }
+
+function RenderCategoryContainer() {
+    var categoryMap = getAllStorage();
+    var elCategoryContainer = document.querySelector('.category-container');
+    var strHtmls = '<span class = category-word> Category: &nbsp </span>'
+    // debugger
+    for (let i = 0; i < categoryMap.length; i++) {
+        var strHtml = `<span class="category-item category${i + 1}" onclick="onCategoryClick(this.innerText)"> ${categoryMap[i][0]} </span>`
+        strHtmls += strHtml;
+    }
+    elCategoryContainer.innerHTML = strHtmls;
+    for (let i = 0; i < categoryMap.length; i++) {
+        var currFontSize = 12 + (15 * (categoryMap[i][1]))
+        $('.category' + (i + 1) + '').css('font-size', '' + currFontSize + 'px')
+    }
+}
+
 
 
 function initCanvas() {
@@ -37,10 +55,15 @@ function renderImgs() {
 }
 
 
-function onchangeFilter() {
+function onChangeCategory() {
+    RenderCategoryContainer()
     renderImgs()
 }
 
+function onCategoryClick(category) {
+    $('.category-filter').val(category);
+    renderImgs()
+}
 
 
 function onBackBtn() {
