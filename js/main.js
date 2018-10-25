@@ -11,6 +11,7 @@ var gFillOrStroke = 'fill';
 
 function init() {
     gScreenSizes = getScreenSizes()
+    setCategoriesForStorgae()
     createImgs()
     renderImgs()
     // initCanvas()
@@ -20,11 +21,14 @@ function init() {
 function RenderCategoryContainer() {
     var categoryMap = getAllStorage();
     var elCategoryContainer = document.querySelector('.category-container');
-    var strHtmls = '<span class = category-word> Category: &nbsp </span>'
-    // debugger
-    for (let i = 0; i < categoryMap.length; i++) {
-        var strHtml = `<span class="category-item category${i + 1}" onclick="onCategoryClick(this.innerText)"> ${categoryMap[i][0]} </span>`
-        strHtmls += strHtml;
+    var strHtmls;
+    if (!categoryMap) strHtmls = '<span class = "category-word"> Pick Image </span>'
+    else {
+        strHtmls = '<span class = "category-word"> Category: &nbsp </span>'
+        for (let i = 0; i < categoryMap.length; i++) {
+            var strHtml = `<div class="category-item category${i + 1}" onclick="onCategoryClick(this.innerText)"> ${categoryMap[i][0]} </div>`
+            strHtmls += strHtml;
+        }
     }
     elCategoryContainer.innerHTML = strHtmls;
     for (let i = 0; i < categoryMap.length; i++) {
@@ -62,7 +66,7 @@ function onChangeCategory() {
 }
 
 function onCategoryClick(category) {
-    $('.category-filter').val(category);
+    $('.category-filter').val(category.trim());
     renderImgs()
 }
 

@@ -3,6 +3,28 @@
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
 
+.category-container{
+    background-color: antiquewhite
+}
+
+.category-word{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 35px;
+    color:cadetblue;
+   
+}
+
+.category-item:hover{
+    cursor: pointer;
+
+}
+
+@media (min-width: 769px) {
+    .category-item{
+        font-size: 2em;
+    } 
+}
+
 
 .nav-link {
     color: rgba(0, 0, 0, 0.9);

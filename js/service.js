@@ -32,17 +32,28 @@ var gCategoryCountMap = {
     bad: 4,
 }
 
+function setCategoriesForStorgae() {
+    var keys = Object.keys(gCategoryCountMap)
+    var vals = Object.values(gCategoryCountMap)
+    for (var i = 0; i < keys.length; i++) {
+        saveToStorage(keys[i], vals[i])
+    }
+}
+
 
 function getAllStorage() {
-    var values = [],
-        keys = Object.keys(localStorage);
-    for (let i = 0; i < keys.length; i++) {
-        var currKey = keys[i];
-        var currVal = localStorage.getItem(keys[i]);
-        var currKeyVal = [currKey, currVal]
-        values.push(currKeyVal);
+    if (jQuery.isEmptyObject(gCategoryCountMap)) return false ;
+    else {
+        var values = []
+        var keys = Object.keys(localStorage);
+        for (let i = 0; i < keys.length; i++) {
+            var currKey = keys[i];
+            var currVal = localStorage.getItem(keys[i]);
+            var currKeyVal = [currKey, currVal]
+            values.push(currKeyVal);
+        }
+        return values;
     }
-    return values;
 }
 
 
@@ -80,7 +91,7 @@ function createImgs() {
 
 
 function getImgs() {
-    var currCategoryKey = ($('.category-filter').val()).toLowerCase()
+    var currCategoryKey = ($('.category-filter').val()).toLowerCase().trim()
     if (currCategoryKey === '') return gImgs;
     else {
         var currCategoryCount = getFromStorage(currCategoryKey)
