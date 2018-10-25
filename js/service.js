@@ -261,7 +261,7 @@ function initCaption() {
 
 
 function listenToEnter() {
-    elCaption = document.querySelector()('.caption')
+    var elCaption = document.querySelector('.caption')
     elCaption.addEventListener('keypress', function (ev) {
         var key = ev.which || e.keyCode;
         if (key === 13) { 

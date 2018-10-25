@@ -108,10 +108,6 @@ function onTxtChange(value) {
 function onTxtFocus() {
     if (!gCurrTxtLoc) gCurrTxtLoc = 0;
     if (!gMeme.txts[0]) createNewText();
-    //     change this function to do
-    // check if input value === selected line, if not change it
-    // or just change it 
-    // drawFrame(gCurrTxtLoc)
 }
 
 
@@ -181,12 +177,10 @@ function renderCanvas() {
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
     drawImage(gCurrImg)
 
-    // var height = gCanvas.height / 5; //if we add more lines we need a height factor
     var currTxt
     var lineX
     var lineY
     for (let i = 0; i < meme.txts.length; i++) {
-        // set Text Style
         currTxt = meme.txts[i]
         if (currTxt.isSelected) {
             drawFrame(i)
