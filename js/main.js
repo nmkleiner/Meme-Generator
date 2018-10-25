@@ -133,9 +133,11 @@ function onResize() {
 function setCanvasSize() {
     var heightFactor = gCurrImg.height / gCurrImg.width
 
-    if (window.innerWidth > 1000) {
+    if (window.innerWidth >= 992) {
         gCanvas.width = 500
     } else if (window.innerWidth >= 768) {
+        gCanvas.width = window.innerWidth
+    } else if (window.innerWidth >= 600) {
         gCanvas.width = 600
     } else {
         gCanvas.width = window.innerWidth
