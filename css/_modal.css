@@ -114,9 +114,9 @@ canvas {
     }
 }
 
-@media (min-width: 1000px){
+@media (min-width: 992px){
 
-    modal {
+    .modal {
         flex-direction: row;
     }
     
