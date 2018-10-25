@@ -5,6 +5,7 @@ var gCanvas
 var gCtx
 var gCurrImg
 var gCurrTxtLoc
+var gFillOrStroke = 'fill';
 
 
 function init() {
@@ -117,7 +118,7 @@ function renderCanvas() {
         // draws the text in the canvas
         gCtx.fillText(currTxt.line, gCanvas.width/2, height)
         gCtx.strokeText(currTxt.line, gCanvas.width/2, height)
-        height += height * 3 + currTxt.fontSize; //if we add more lines we need a height factor
+        height += height * 3.4; //if we add more lines we need a height factor
     }
 }
 
@@ -127,15 +128,16 @@ function onShadowChange(isChecked) {
     renderCanvas()
 }
 
-function onFillColorChange(color) {
-    changeFillColor(color, gCurrTxtLoc)
+function onFillOrStrokeChange(fillOrStroke){
+    gFillOrStroke = (fillOrStroke === 'stroke') ?  'stroke': 'fill';
+ 
+}
+function onColorChange(color) {
+    (gFillOrStroke === 'stroke') ? changeStrokeColor(color, gCurrTxtLoc) : changeFillColor(color, gCurrTxtLoc);
     renderCanvas()
 }
 
-function onStrokeColorChange(color) {
-    changeStrokeColor(color, gCurrTxtLoc)
-    renderCanvas()
-}
+
 
 function onFontSizeChange(fontSize) {
     changeFontSize(fontSize, gCurrTxtLoc)

@@ -55,7 +55,7 @@
                     </datalist>
                     <br>
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="onchangeFilter()">Search</button>
-                </div>
+            </div>
             </div>
         </nav>
     </header>
@@ -77,7 +77,7 @@
         <div class="modal-mid-and-bot-container d-lg-flex flex-lg-row-reverse">
 
             <div class="modal-mid-container d-flex flex-column">
-                <input type="text" class="caption" id="top-txt" oninput="onTxtChange(0,this.value)" placeholder="Top Caption">
+                <input type="text" class="caption" id="top-txt" oninput="onTxtChange(0,this.value)" onfocus="onTxtFocus(0)" placeholder="Top Caption">
                 <canvas width="100" height="100" id="canvas">Please upgrade your browser.</canvas>
                 <input type="text" class="caption" id="bot-txt" oninput="onTxtChange(1,this.value)" onfocus="onTxtFocus(1)"
                     placeholder="Bottom Caption">
@@ -111,40 +111,22 @@
 
 
 
-                <!-- CONTROL BOX BOT ROW -->
-                <div class="control-box-bot-row d-flex flex-column justify-content-between">
+            <!-- CONTROL BOX BOT ROW -->
+            <div class="control-box-bot-row d-flex flex-column justify-content-between">
 
-                    <div class="fill-color-container d-flex justify-content-between">
-                        <button class="btn btn-primary" value="#0069d9" onclick="onFillColorChange(this.value)"></button>
-                        <button class="btn btn-secondary" value="#6c757d" onclick="onFillColorChange(this.value)"></button>
-                        <button class="btn btn-success" value="#28a745" onclick="onFillColorChange(this.value)"></button>
-                        <button class="btn btn-danger" value="#dc3545" onclick="onFillColorChange(this.value)"></button>
-                        <button class="btn btn-warning" value="#ffc107" onclick="onFillColorChange(this.value)"></button>
-                        <button class="btn btn-info" value="#17a2b8" onclick="onFillColorChange(this.value)"></button>
-                        <button class="btn btn-light" value="#f8f9fa" onclick="onFillColorChange(this.value)"></button>
-                        <button class="btn btn-dark" value="#343a40" onclick="onFillColorChange(this.value)"></button>
-                    </div>
-
-                    <div class="stroke-color-container d-flex justify-content-between">
-                        <button class="btn btn-primary" value="#0069d9" onclick="onStrokeColorChange(this.value)"></button>
-                        <button class="btn btn-secondary" value="#6c757d" onclick="onStrokeColorChange(this.value)"></button>
-                        <button class="btn btn-success" value="#28a745" onclick="onStrokeColorChange(this.value)"></button>
-                        <button class="btn btn-danger" value="#dc3545" onclick="onStrokeColorChange(this.value)"></button>
-                        <button class="btn btn-warning" value="#ffc107" onclick="onStrokeColorChange(this.value)"></button>
-                        <button class="btn btn-info" value="#17a2b8" onclick="onStrokeColorChange(this.value)"></button>
-                        <button class="btn btn-light" value="#f8f9fa" onclick="onStrokeColorChange(this.value)"></button>
-                        <button class="btn btn-dark" value="#343a40" onclick="onStrokeColorChange(this.value)"></button>
-                    </div>
-                </div>
-                <div class="save-and-share-buttons d-flex justify-content-between">
-                    <a class="btn btn-download btn-md" onclick="onDownload(this)">
-                        <i class="fas fa-2x fa-inverse fa-download"></i>
-                        <span class="button-text">Download</span>
-                    </a>
-                    <button class="btn btn-md">
-                        <i class="fab fa-2x fa-inverse fa-facebook-square"></i>
-                        <span class="button-text">Share</span>
-                    </button>
+                <div class="color-container">
+                    <select class="color-fill-or-stroke" onchange="onFillOrStrokeChange(this.value)">
+                        <option value="fill">Fill Color</option>
+                        <option value="stroke">Stroke Color</option>
+                    </select>
+                    <button class="btn btn-primary" value="#0069d9" onclick="onColorChange(this.value)"></button>
+                    <button class="btn btn-secondary" value="#6c757d" onclick="onColorChange(this.value)"></button>
+                    <button class="btn btn-success" value="#28a745" onclick="onColorChange(this.value)"></button>
+                    <button class="btn btn-danger" value="#dc3545" onclick="onColorChange(this.value)"></button>
+                    <button class="btn btn-warning" value="#ffc107" onclick="onColorChange(this.value)"></button>
+                    <button class="btn btn-info" value="#17a2b8" onclick="onColorChange(this.value)"></button>
+                    <button class="btn btn-light" value="#f8f9fa" onclick="onColorChange(this.value)"></button>
+                    <button class="btn btn-dark" value="#343a40" onclick="onColorChange(this.value)"></button>
                 </div>
             </div>
         </div>

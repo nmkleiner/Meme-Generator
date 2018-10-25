@@ -67,11 +67,11 @@ canvas {
 .color-choose {
     display: none;
 }
-.fill-color-container {
-    margin-bottom: 20px;
-}
-.fill-color-container .btn , .stroke-color-container .btn {
-    width: 10%;
+
+.color-container .btn{
+    height: 25px;
+    width: 35px;
+    margin-top: 5px;
 }
 
 .shadow{
