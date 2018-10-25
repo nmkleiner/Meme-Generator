@@ -86,60 +86,38 @@
 
             <!-- MODAL BOT CONTAINER (CONTROL-BOX)  -->
             <div class="modal-bot-container control-box d-flex flex-column justify-content-center">
-                <!-- CONTROL BOX TOP ROW -->
-                <div class="control-box-top-row d-flex flex-row justify-content-sm-between justify-content-md-around">
-
-                    <div class="shadow-box">
-                        <input type="checkbox" id="checkbox1" onchange="onShadowChange(this.checked)" />
-                        <label for="checkbox1">Shadow<span></span></label>
-                    </div>
-
-                    <div class="font-size-group d-flex">
-                        <span class="font-size-span">Font Size:</span>
-                        <span class="font-size-group-btn">
-                            <button type="button" class="btn btn-default btn-number" onclick="onFontSizeClick(-1)">
-                                <span class="glyphicon glyphicon-minus">-</span>
-                            </button>
-                        </span>
-                        <input type="number" class="form-control input-font-size" value="45" min="0" oninput="onFontSizeChange(this.value)">
-                        <span class="font-group-btn">
-                            <button type="button" class="btn btn-default btn-number" onclick="onFontSizeClick(1)">
-                                <span class="glyphicon glyphicon-plus">+</span>
-                            </button>
-                        </span>
-                    </div>
+                <div class="shadow-box">
+                    <input type="checkbox" id="checkbox1" onchange="onShadowChange(this.checked)" />
+                    <label for="checkbox1">Shadow<span></span></label>
                 </div>
 
-
-
-                <!-- CONTROL BOX BOT ROW -->
-                <div class="control-box-bot-row d-flex flex-column justify-content-between">
-
-                    <div class="color-container">
-                        <select class="color-fill-or-stroke" onchange="onFillOrStrokeChange(this.value)">
-                            <option value="fill">Fill Color</option>
-                            <option value="stroke">Stroke Color</option>
-                        </select>
-                        <button class="btn btn-primary" value="#0069d9" onclick="onColorChange(this.value)"></button>
-                        <button class="btn btn-secondary" value="#6c757d" onclick="onColorChange(this.value)"></button>
-                        <button class="btn btn-success" value="#28a745" onclick="onColorChange(this.value)"></button>
-                        <button class="btn btn-danger" value="#dc3545" onclick="onColorChange(this.value)"></button>
-                        <button class="btn btn-warning" value="#ffc107" onclick="onColorChange(this.value)"></button>
-                        <button class="btn btn-info" value="#17a2b8" onclick="onColorChange(this.value)"></button>
-                        <button class="btn btn-light" value="#f8f9fa" onclick="onColorChange(this.value)"></button>
-                        <button class="btn btn-dark" value="#343a40" onclick="onColorChange(this.value)"></button>
-                    </div>
+                <div class="font-size-group d-flex">
+                    <span class="font-size-span">Font Size:</span>
+                    <span class="font-size-group-btn">
+                        <button type="button" class="btn btn-default btn-number" onclick="onFontSizeClick(-1)">
+                            <span class="glyphicon glyphicon-minus">-</span>
+                        </button>
+                    </span>
+                    <input type="number" class="form-control input-font-size" value="45" min="0" oninput="onFontSizeChange(this.value)">
+                    <span class="font-group-btn">
+                        <button type="button" class="btn btn-default btn-number" onclick="onFontSizeClick(1)">
+                            <span class="glyphicon glyphicon-plus">+</span>
+                        </button>
+                    </span>
                 </div>
-                <div class="save-and-share-buttons d-flex justify-content-between">
-                    <a class="btn btn-download btn-md" onclick="onDownload(this)">
-                        <i class="fas fa-2x fa-inverse fa-download"></i>
-                        <span class="button-text">Download</span>
-                    </a>
-                    <button class="btn btn-md">
-                        <i class="fab fa-2x fa-inverse fa-facebook-square"></i>
-                        <span class="button-text">Share</span>
-                    </button>
-                </div>
+            <div class="color-container">
+                <select class="color-fill-or-stroke" onchange="onFillOrStrokeChange(this.value)">
+                    <option value="fill">Fill Color</option>
+                    <option value="stroke">Stroke Color</option>
+                </select>
+                <button class="btn btn-primary" value="#0069d9" onclick="onColorChange(this.value)"></button>
+                <button class="btn btn-secondary" value="#6c757d" onclick="onColorChange(this.value)"></button>
+                <button class="btn btn-success" value="#28a745" onclick="onColorChange(this.value)"></button>
+                <button class="btn btn-danger" value="#dc3545" onclick="onColorChange(this.value)"></button>
+                <button class="btn btn-warning" value="#ffc107" onclick="onColorChange(this.value)"></button>
+                <button class="btn btn-info" value="#17a2b8" onclick="onColorChange(this.value)"></button>
+                <button class="btn btn-light" value="#f8f9fa" onclick="onColorChange(this.value)"></button>
+                <button class="btn btn-dark" value="#343a40" onclick="onColorChange(this.value)"></button>
             </div>
             <div class="save-and-share-buttons d-flex justify-content-between">
                 <a class="btn btn-download btn-md" onclick="onDownload(this)">
@@ -152,15 +130,16 @@
                 </button>
             </div>
         </div>
+    </div>
 
 
 
 
-        <script src="lib/jquery/jquery.js"></script>
-        <script src="lib/bootstrap/js/bootstrap.js"></script>
-        <script src="js/utils.js"></script>
-        <script src="js/service.js"></script>
-        <script src="js/main.js"></script>
+    <script src="lib/jquery/jquery.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/service.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

@@ -29,11 +29,13 @@ background-color: transparent;
 
 .caption{
     width: 100vw;
-    /* max-width: 452px; */
+    max-width: 500px;
+    
 }
 
 canvas {
-    /* height: 300px; */
+    width:100vw;
+    max-width: 500px;
     display: block;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
@@ -104,20 +106,12 @@ canvas {
 
 @media (min-width: 768px) {
     
-    
-    
-
-    .caption{
-        width: 600px;
-    }
-
-    
     .range-container {
         width: 70%;
     }
 }
 
-@media (min-width: 1000px){
+@media (min-width: 992px){
 
     modal {
         flex-direction: row;
