@@ -74,26 +74,6 @@ function onTxtChange(txtLoc, value) {
 }
 
 
-function onCanvasClick(ev) {
-    var x = ev.clientX - gOffset.left;
-    var y = ev.clientY - gOffset.top;
-    // update the condition to include x & xRange
-    // fix the y, not accurate enough
-    var texts = gMeme.txts
-    var lineIdx = gMeme.txts.findIndex(txt => {
-        return (y < txt.lineYRange[0] + 10 &&
-            y > txt.lineYRange[1] - 10)
-    })
-    texts.forEach(txt => {
-        txt.isSelected = false;
-    })
-    if (lineIdx !== -1) {
-        gCurrTxtLoc = lineIdx
-        gMeme.txts[gCurrTxtLoc].isSelected = true;
-        console.log('line ' + gCurrTxtLoc + ' selected')
-    } 
-}
-
 
 function onTxtFocus(txtLoc) {
     gCurrTxtLoc = txtLoc;
@@ -141,11 +121,11 @@ function setCanvas() {
         gCanvas.width = 500
     } else {
         gCanvas.width = window.innerWidth
-        $('.caption').css('width','100vw')
+        $('.caption').css('width', '100vw')
 
         if (window.innerHeight < window.innerWidth) {
             gCanvas.width = 500
-            $('.caption').css('width','500px')
+            $('.caption').css('width', '500px')
         }
     }
     gCanvas.height = gCanvas.width * heightFactor
@@ -191,16 +171,53 @@ function renderCanvas() {
 }
 
 
+
+function onCanvasClick(ev) {
+    var x = ev.clientX - gOffset.left;
+    var y = ev.clientY - gOffset.top;
+    console.log('x', x, 'y', y)
+    // update the condition to include x & xRange
+    // fix the y, not accurate enough
+    var texts = gMeme.txts
+    var lineIdx = gMeme.txts.findIndex(txt => {
+        return (y > txt.lineYRange[0] - 5 &&
+            y < txt.lineYRange[1] + 5 &&
+            x > txt.lineXRange[0] - 5 &&
+            x < txt.lineXRange[1] + 5)
+    })
+    texts.forEach(txt => {
+        txt.isSelected = false;
+    })
+    if (lineIdx !== -1) {
+        gCurrTxtLoc = lineIdx
+        gMeme.txts[gCurrTxtLoc].isSelected = true;
+        renderCanvas()
+    }
+}
+
+
 function onXChange(xDiff) {
     updateX(xDiff, gCurrTxtLoc)
+    renderCanvas()
 }
 
 function onYChange(yDiff) {
     updateY(yDiff, gCurrTxtLoc)
+    renderCanvas()
 }
 
 
 function drawFrame(line) {
     var txt = gMeme.txts[line]
-    console.log(txt)
+    gCtx.save()
+    gCtx.strokeStyle = 'orangered'
+    gCtx.rect(txt.lineXRange[0] - 10, (2 * txt.lineYRange[0]) - txt.lineYRange[1],
+        txt.lineXRange[1] - txt.lineXRange[0] + 20, txt.lineYRange[1] - txt.lineYRange[0] + 10);
+    gCtx.stroke();
+    gCtx.restore();
+}
+
+
+
+function drawRect(x, y) {
 }

@@ -158,7 +158,7 @@ function initLine() {
             txt.lineY = gCanvas.height * factor / 5
             txt.lineYRange = [
                 txt.lineY,
-                txt.lineY - txt.fontSize
+                txt.lineY + txt.fontSize
             ]
 
         }
