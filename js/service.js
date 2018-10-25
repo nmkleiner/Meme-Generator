@@ -41,6 +41,27 @@ var gMeme = {
     ]
 }
 
+var gCategoryCountMap = {
+    happy: 3,
+    sad: 2,
+    animal: 1,
+    funny: 5,
+    bad: 4,
+}
+
+
+function getAllStorage() {
+    var values = [],
+        keys = Object.keys(localStorage);
+    for (let i = 0; i < keys.length; i++) {
+        var currKey = keys[i];
+        var currVal = localStorage.getItem(keys[i]);
+        var currKeyVal = [currKey, currVal]
+        values.push(currKeyVal);
+    }
+    return values;
+}
+
 
 function createImgs() {
 
@@ -74,14 +95,20 @@ function createImgs() {
     gImgs = imgs;
 }
 
+
 function getImgs() {
-    var currFilter = ($('.filter').val())
-    if (currFilter === '') return gImgs;
-    else return gImgs.filter(currImg => {
-        return (currImg.keywords.some(keyWord => {
-            return keyWord === currFilter
-        }))
-    })
+    var currCategoryKey = ($('.category-filter').val()).toLowerCase()
+    if (currCategoryKey === '') return gImgs;
+    else {
+        var currCategoryCount =  getFromStorage(currCategoryKey)
+        gCategoryCountMap[currCategoryKey] = currCategoryCount +1; 
+        saveToStorage(currCategoryKey, gCategoryCountMap[currCategoryKey])
+        return gImgs.filter(currImg => {
+            return (currImg.keywords.some(keyWord => {
+                return keyWord.toLowerCase() === currCategoryKey
+            }))
+        })
+    }
 }
 
 function setMemeByImgId(imgId) {
@@ -177,7 +204,7 @@ function updateX(xDiff) {
 
 function updateY(yDiff) {
     var txt = gMeme.txts[gCurrTxtLoc]
-    if (yDiff) txt.lineY += yDiff 
+    if (yDiff) txt.lineY += yDiff
     txt.lineYRange = [
         txt.lineY,
         txt.lineY - txt.fontSize
