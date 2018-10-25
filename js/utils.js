@@ -20,3 +20,9 @@ function getHex(decStr) {
     hexStr = '#' + hexStr
     return hexStr
 }
+
+
+function toggleModal() {
+    $('.modal').slideToggle(400)
+    $('.modal').css('display', 'flex')
+}
