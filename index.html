@@ -84,18 +84,15 @@
         <div class="modal-mid-and-bot-container">
 
             <div class="modal-mid-container d-flex flex-column">
-                <input type="text" class="caption" id="top-txt" oninput="onTxtChange(0,this.value)" onfocus="onTxtFocus(0)"
-                    placeholder="Top Caption">
+                <input type="text" class="caption" id="top-txt" oninput="onTxtChange(this.value)" onfocus="onTxtFocus()"placeholder="Add your text">
                 <canvas id="canvas" onclick="onCanvasClick(event)">Please upgrade your browser.</canvas>
-                <input type="text" class="caption" id="bot-txt" oninput="onTxtChange(1,this.value)" onfocus="onTxtFocus(1)"
-                    placeholder="Bottom Caption">
             </div>
 
             <!-- MODAL BOT CONTAINER (CONTROL-BOX)  -->
             <div class="control-box-grid-container">
-                <div class="control-box-item d-flex flex-column">
-                    <div class="d-flex">
+                <div class="control-box-item d-flex flex-column justify-content-between">
 
+                    <div class="plus-minus-and-arrow-btns d-flex">
                         <div class="font-size-group-item d-flex">
                             <span class="font-size-minus-group-btn">
                                 <button type="button" class="font-nimus-btn btn btn-light btn-number" ondblclick="onFontSizeClick(-10)" onclick="onFontSizeClick(-1)">
@@ -116,10 +113,12 @@
                         </div>
                     </div>
                     <div class="arrow-btns-container d-flex justify-content-around">
-                        <button class="btn btn-md btn-arrow" ondblclick="onXChange(-30)" onclick="onXChange(-5)"><i class="fas fa-arrow-left"></i></button>
-                        <button class="btn btn-md btn-arrow" ondblclick="onXChange(30)" onclick="onXChange(5)"><i class="fas fa-arrow-right"></i></button>
-                        <button class="btn btn-md btn-arrow" ondblclick="onYChange(-30)" onclick="onYChange(-5)"><i class="fas fa-arrow-up"></i></button>
-                        <button class="btn btn-md btn-arrow" ondblclick="onYChange(30)" onclick="onYChange(5)"><i class="fas fa-arrow-down"></i></button>
+                        <button class="btn btn-sm btn-arrow" ondblclick="onXChange(-30)" onclick="onXChange(-5)"><i class="fas fa-arrow-left"></i></button>
+                        <button class="btn btn-sm btn-arrow" ondblclick="onXChange(30)" onclick="onXChange(5)"><i class="fas fa-arrow-right"></i></button>
+                        <button class="btn btn-sm btn-arrow" ondblclick="onYChange(-30)" onclick="onYChange(-5)"><i class="fas fa-arrow-up"></i></button>
+                        <button class="btn btn-sm btn-arrow" ondblclick="onYChange(30)" onclick="onYChange(5)"><i class="fas fa-arrow-down"></i></button>
+                        <button class="btn btn-sm btn-add-row" onclick="onAddNewLine()"><i class="fas fa-plus"></i></button>
+                        <button class="btn btn-sm btn-remove-row" onclick="onRemoveLine()"><i class="fas fa-trash"></i></button>
                     </div>
                 </div>
                 <div class="color-container-item">

@@ -65,8 +65,8 @@ function onColorChange(color) {
 
 
 
-function onTxtChange(txtLoc, value) {
-    gCurrTxtLoc = txtLoc;
+function onTxtChange(value) {
+    gCurrTxtLoc;
     addText(gCurrTxtLoc, value);
     updateX(0)
 
@@ -76,8 +76,12 @@ function onTxtChange(txtLoc, value) {
 
 
 
-function onTxtFocus(txtLoc) {
-    gCurrTxtLoc = txtLoc;
+function onTxtFocus() { 
+    if (!gCurrTxtLoc) gCurrTxtLoc = 0;
+    if (!gMeme.txts[0]) createNewText();
+//     change this function to do
+// check if input value === selected line, if not change it
+// or just change it 
     // drawFrame(gCurrTxtLoc)
 }
 
@@ -133,7 +137,7 @@ function setCanvas() {
     gCanvas.height = gCanvas.width * heightFactor
 
     gOffset = getOffset()
-    initLine()
+    initLines()
 }
 
 function drawImage(img) {
@@ -180,21 +184,26 @@ function onCanvasClick(ev) {
     var x = ev.clientX - gOffset.left;
     var y = ev.clientY - gOffset.top;
     var texts = gMeme.txts
-    console.log('x,y',x,y)
+    debugger;
     var lineIdx = gMeme.txts.findIndex(txt => {
-        return (y > txt.lineYRange[0] - 5 &&
-            y < txt.lineYRange[1] + 5 &&
-            x > txt.lineXRange[0] - 5 &&
-            x < txt.lineXRange[1] + 5)
+        var botY = txt.lineYRange[1];
+        var topY = txt.lineYRange[0];
+        var leftX = txt.lineXRange[0];
+        var rightX = txt.lineXRange[1];
+        return (y > botY - 5 &&
+            y < topY + 5 &&
+            x >  leftX - 5 &&
+            x < rightX + 5)
     })
     texts.forEach(txt => {
         txt.isSelected = false;
     })
     if (lineIdx !== -1) {
-        gCurrTxtLoc = lineIdx
+        gCurrTxtLoc = lineIdx;
         gMeme.txts[gCurrTxtLoc].isSelected = true;
-        renderCanvas()
+        document.querySelector('.caption').value = gMeme.txts[gCurrTxtLoc].line 
     }
+    renderCanvas()
 }
 
 
@@ -218,4 +227,17 @@ function drawFrame(line) {
         txt.lineXRange[1] - txt.lineXRange[0] + 20, txt.lineYRange[1] - txt.lineYRange[0] + 10);
     gCtx.stroke();
     gCtx.restore();
+}
+
+
+function onAddNewLine() {
+    createNewText()
+    initCaption()
+    renderCanvas()
+}
+
+function onRemoveLine() {
+    deleteText(gCurrTxtLoc)
+    document.querySelector('.caption').value = ''
+    renderCanvas()
 }
