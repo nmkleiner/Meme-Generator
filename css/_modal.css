@@ -29,12 +29,11 @@ background-color: transparent;
 
 .caption{
     width: 100vw;
-    /* max-width: 452px; */
+    max-width: 768px;
 }
 
 canvas {
-    /* height: 300px; */
-    
+    max-width: 768px;
     display: block;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
