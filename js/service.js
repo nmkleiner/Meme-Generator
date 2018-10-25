@@ -262,3 +262,14 @@ function deleteText(idx) {
 function initCaption() {
     document.querySelector('.caption').value = 'new line'
 }
+
+
+function listenToEnter() {
+    var elCaption = document.querySelector('.caption')
+    elCaption.addEventListener('keypress', function (ev) {
+        var key = ev.which || e.keyCode;
+        if (key === 13) { 
+          renderCanvas()
+        }
+    });
+}

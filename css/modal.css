@@ -150,11 +150,11 @@ transform: translateY(1px);
 }
 
 @media (min-width: 992px){
-
+    
     .modal {
         flex-direction: row;
     }
-
+    
     .modal-mid-and-bot-container {
         display: flex;
         flex-direction: row-reverse;
@@ -162,19 +162,22 @@ transform: translateY(1px);
     .modal-mid-container {
         flex-grow: unset;
     }
-
+    
     .control-box-grid-container{
         grid-template-columns: 1fr ;
         grid-template-rows: 1fr 1fr 1fr;
+        max-width: 600px;
     }
- 
+    
     .caption{
         width: 500px;
     }
     .save-and-share-buttons-item{
         flex-direction:  row;
-         align-items: center;
-         justify-content: space-between;
-        }
-
+        align-items: center;
+        justify-content: space-between;
+    }
+    
 }
+
+

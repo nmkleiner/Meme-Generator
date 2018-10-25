@@ -14,7 +14,7 @@ function init() {
     setCategoriesForStorgae()
     createImgs()
     renderImgs()
-    initCanvas()
+    // initCanvas()
     RenderCategoryContainer()
 }
 
@@ -40,6 +40,7 @@ function RenderCategoryContainer() {
 
 
 function initCanvas() {
+    if (gCanvas) return;
     gCanvas = document.querySelector('#canvas');
     gCtx = gCanvas.getContext('2d');
 }
@@ -106,6 +107,7 @@ function onColorChange(color) {
 
 
 function onTxtChange(value) {
+    listenToEnter()
     gCurrTxtLoc;
     addText(gCurrTxtLoc, value);
     updateX(0)
@@ -119,10 +121,6 @@ function onTxtChange(value) {
 function onTxtFocus() {
     if (!gCurrTxtLoc) gCurrTxtLoc = 0;
     if (!gMeme.txts[0]) createNewText();
-    //     change this function to do
-    // check if input value === selected line, if not change it
-    // or just change it 
-    // drawFrame(gCurrTxtLoc)
 }
 
 
@@ -141,6 +139,7 @@ function onDownload(elLink) {
 
 
 function onGalleryImgClick(elImg, imgId) {
+    initCanvas()
     setMemeByImgId(imgId)
     toggleModal()
     gCurrImg = createImg(elImg.src)
@@ -156,6 +155,7 @@ function createImg(imgSrc) {
 }
 
 function onResize() {
+    if (!gCanvas) return;
     setCanvas()
     drawImage(gCurrImg)
 }
@@ -167,7 +167,6 @@ function setCanvas() {
         gCanvas.width = 500
     } else {
         gCanvas.width = window.innerWidth
-        $('.caption').css('width', '100vw')
 
         if (window.innerHeight < window.innerWidth) {
             gCanvas.width = 500
@@ -191,12 +190,10 @@ function renderCanvas() {
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
     drawImage(gCurrImg)
 
-    // var height = gCanvas.height / 5; //if we add more lines we need a height factor
     var currTxt
     var lineX
     var lineY
     for (let i = 0; i < meme.txts.length; i++) {
-        // set Text Style
         currTxt = meme.txts[i]
         if (currTxt.isSelected) {
             drawFrame(i)
@@ -282,3 +279,6 @@ function onRemoveLine() {
     renderCanvas()
 }
 
+function onAbout() {
+    $('.modal-about').slideToggle(500)
+}
