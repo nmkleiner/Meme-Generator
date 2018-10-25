@@ -116,9 +116,9 @@ function changeStrokeColor(color, currTxtLoc) {
     currTxt.strokeColor  = color;
 }
 
-function changeFontSize(fontSize, currTxtLoc) {
+function changeFontSize(fontSizeNum, currTxtLoc) {
     var currTxt = gMeme.txts[currTxtLoc];
-    currTxt.fontSize = fontSize;
+    currTxt.fontSize += fontSizeNum;
 }
 
 

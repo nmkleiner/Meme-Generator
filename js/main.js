@@ -81,25 +81,8 @@ function onFontSizeChange(fontSize) {
     renderCanvas()
 }
 
-function onFontSizeClick(num) {
-    var fontSize = +($('.input-font-size').val())
-    if (fontSize < 0) return;
-    fontSize = fontSize + num
-    $('.input-font-size').val(fontSize)
-    changeFontSize(fontSize, gCurrTxtLoc)
-    renderCanvas()
-}
-
-function onRangeColorChange(decStr, isFillColor) {
-    var color = getHex(decStr)
-    if (isFillColor === 'fill') {
-        var elRangeContainer = document.querySelector('#fill-range-container')
-        changeFillColor(color, gCurrTxtLoc)
-    } else {
-        var elRangeContainer = document.querySelector('#stroke-range-container')
-        changeStrokeColor(color, gCurrTxtLoc)
-    }
-    elRangeContainer.style.backgroundColor = color
+function onFontSizeClick(fontSizeNum) {
+    changeFontSize(fontSizeNum, gCurrTxtLoc)
     renderCanvas()
 }
 
