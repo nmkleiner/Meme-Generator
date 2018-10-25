@@ -19,4 +19,10 @@
 
 }
 
+@media (min-width: 769px) {
+    .category-item{
+        font-size: 2em;
+    } 
+}
+
 
