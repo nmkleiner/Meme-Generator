@@ -37,14 +37,14 @@
     }   
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 992px) {
     .gallery-img{
-        width: 241px;
-        height: 241px;
+        width: 239px;
+        height: 239px;
     }
     
     
     .imgs-container {
-        max-width: 1000px;
+        max-width: 992px;
     }
 }

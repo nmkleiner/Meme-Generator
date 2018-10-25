@@ -29,13 +29,11 @@ background-color: transparent;
 
 .caption{
     width: 100vw;
-    max-width: 500px;
-    
+    max-width: 768px;
 }
 
 canvas {
-    width:100vw;
-    max-width: 500px;
+    max-width: 768px;
     display: block;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
@@ -109,6 +107,11 @@ canvas {
     .range-container {
         width: 70%;
     }
+
+    .caption{
+        width: 768px;
+    }
+
 }
 
 @media (min-width: 992px){
