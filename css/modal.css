@@ -33,7 +33,7 @@ background-color: transparent;
 }
 
 canvas {
-    max-width: 768px;
+    /* max-width: 768px; */
     display: block;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }

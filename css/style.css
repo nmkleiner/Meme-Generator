@@ -1,7 +1,7 @@
 @import "../lib/bootstrap/css/bootstrap.css";
-@import "_header.css";
-@import "_gallery.css";
-@import "_modal.css";
-@import "_checkbox.css";
-@import "_footer.css";
+@import "header.css";
+@import "gallery.css";
+@import "modal.css";
+@import "checkbox.css";
+@import "footer.css";
 
