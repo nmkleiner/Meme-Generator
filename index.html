@@ -84,7 +84,8 @@
         <div class="modal-mid-and-bot-container">
 
             <div class="modal-mid-container d-flex flex-column">
-                <input type="text" class="caption" id="top-txt" oninput="onTxtChange(this.value)" onfocus="onTxtFocus()"placeholder="Add your text">
+                <input type="text" class="caption" id="top-txt" oninput="onTxtChange(this.value)" onfocus="onTxtFocus()"
+                    placeholder="Add your text">
                 <canvas id="canvas" onclick="onCanvasClick(event)">Please upgrade your browser.</canvas>
             </div>
 
@@ -92,15 +93,17 @@
             <div class="control-box-grid-container">
                 <div class="control-box-item d-flex flex-column justify-content-between">
 
-                    <div class="plus-minus-and-arrow-btns d-flex">
+                    <div class="btns-plus-minus-shadow d-flex justify-content-between">
                         <div class="font-size-group-item d-flex">
                             <span class="font-size-minus-group-btn">
-                                <button type="button" class="font-nimus-btn btn btn-light btn-number" ondblclick="onFontSizeClick(-10)" onclick="onFontSizeClick(-1)">
+                                <button type="button" class="font-nimus-btn btn btn-light btn-number" ondblclick="onFontSizeClick(-10)"
+                                    onclick="onFontSizeClick(-1)">
                                     <i class="fas fa-font fa-sm"></i>
                                 </button>
                             </span>
                             <span class="font-size-plus-group-btn">
-                                <button type="button" class="font-plus-btn btn btn-light btn-number" ondblclick="onFontSizeClick(10)" onclick="onFontSizeClick(1)">
+                                <button type="button" class="font-plus-btn btn btn-light btn-number" ondblclick="onFontSizeClick(10)"
+                                    onclick="onFontSizeClick(1)">
                                     <i class="fas fa-font fa-lg"></i>
                                 </button>
                             </span>
@@ -117,7 +120,8 @@
                         <button class="btn btn-sm btn-arrow" ondblclick="onXChange(30)" onclick="onXChange(5)"><i class="fas fa-arrow-right"></i></button>
                         <button class="btn btn-sm btn-arrow" ondblclick="onYChange(-30)" onclick="onYChange(-5)"><i class="fas fa-arrow-up"></i></button>
                         <button class="btn btn-sm btn-arrow" ondblclick="onYChange(30)" onclick="onYChange(5)"><i class="fas fa-arrow-down"></i></button>
-                        <button class="btn btn-sm btn-add-row" onclick="onAddNewLine()"><i class="fas fa-plus"></i></button>
+                        <button class="btn btn-sm btn-add-row" onclick="onAddNewLine('center')">--</button>
+                        <button class="btn btn-sm btn-add-bot-row" onclick="onAddNewLine('bottom')">__</button>
                         <button class="btn btn-sm btn-remove-row" onclick="onRemoveLine()"><i class="fas fa-trash"></i></button>
                     </div>
                 </div>

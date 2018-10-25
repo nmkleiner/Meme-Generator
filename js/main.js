@@ -99,12 +99,12 @@ function onTxtChange(value) {
 
 
 
-function onTxtFocus() { 
+function onTxtFocus() {
     if (!gCurrTxtLoc) gCurrTxtLoc = 0;
     if (!gMeme.txts[0]) createNewText();
-//     change this function to do
-// check if input value === selected line, if not change it
-// or just change it 
+    //     change this function to do
+    // check if input value === selected line, if not change it
+    // or just change it 
     // drawFrame(gCurrTxtLoc)
 }
 
@@ -160,7 +160,7 @@ function setCanvas() {
     gCanvas.height = gCanvas.width * heightFactor
 
     gOffset = getOffset()
-    initLines()
+    initFirstLine()
 }
 
 function drawImage(img) {
@@ -207,15 +207,15 @@ function onCanvasClick(ev) {
     var x = ev.clientX - gOffset.left;
     var y = ev.clientY - gOffset.top;
     var texts = gMeme.txts
-    debugger;
+    // debugger;
     var lineIdx = gMeme.txts.findIndex(txt => {
         var botY = txt.lineYRange[1];
         var topY = txt.lineYRange[0];
         var leftX = txt.lineXRange[0];
         var rightX = txt.lineXRange[1];
-        return (y > botY - 5 &&
-            y < topY + 5 &&
-            x >  leftX - 5 &&
+        return (y < botY - 5 &&
+            y > topY + 5 &&
+            x > leftX - 5 &&
             x < rightX + 5)
     })
     texts.forEach(txt => {
@@ -224,7 +224,7 @@ function onCanvasClick(ev) {
     if (lineIdx !== -1) {
         gCurrTxtLoc = lineIdx;
         gMeme.txts[gCurrTxtLoc].isSelected = true;
-        document.querySelector('.caption').value = gMeme.txts[gCurrTxtLoc].line 
+        document.querySelector('.caption').value = gMeme.txts[gCurrTxtLoc].line
     }
     renderCanvas()
 }
@@ -253,8 +253,8 @@ function drawFrame(line) {
 }
 
 
-function onAddNewLine() {
-    createNewText()
+function onAddNewLine(loc) {
+    createNewText(loc)
     initCaption()
     renderCanvas()
 }
@@ -264,3 +264,4 @@ function onRemoveLine() {
     document.querySelector('.caption').value = ''
     renderCanvas()
 }
+

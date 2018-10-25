@@ -83,8 +83,8 @@ function getImgs() {
     var currCategoryKey = ($('.category-filter').val()).toLowerCase()
     if (currCategoryKey === '') return gImgs;
     else {
-        var currCategoryCount =  getFromStorage(currCategoryKey)
-        gCategoryCountMap[currCategoryKey] = currCategoryCount +1; 
+        var currCategoryCount = getFromStorage(currCategoryKey)
+        gCategoryCountMap[currCategoryKey] = currCategoryCount + 1;
         saveToStorage(currCategoryKey, gCategoryCountMap[currCategoryKey])
         return gImgs.filter(currImg => {
             return (currImg.keywords.some(keyWord => {
@@ -150,7 +150,7 @@ function getOffset() {
 }
 
 
-function initLines() {
+function initFirstLine() {
     if (!gMeme.txts[0].lineX) {
         for (var i = 0; i < gMeme.txts.length; i++) {
             var txt = gMeme.txts[i]
@@ -179,7 +179,7 @@ function initLines() {
 function updateX(xDiff) {
     var txt = gMeme.txts[gCurrTxtLoc]
     if (xDiff) txt.lineX += xDiff
-    
+
     var fontFactor = 0.5;
     txt.lineXRange = [
         txt.lineX - (txt.line.length * txt.fontSize * fontFactor) / 2,
@@ -197,14 +197,18 @@ function updateY(yDiff) {
 }
 
 
-function createNewText() {
-
+function createNewText(loc) {
+    if (loc === 'center') {
+        var lineY = gCanvas.height / 2;
+    } else {
+        var lineY = gCanvas.height * 4 / 5;
+    }
     gMeme.txts.push({
         line: 'new line',
         fontSize: 45,
-        lineY: gCanvas.height/2,
+        lineY,
         lineYRange: [],
-        lineX: gCanvas.width/2,
+        lineX: gCanvas.width / 2,
         lineXRange: [],
         fontFamily: 'Impact, Haettenschweiler, Arial Narrow Bold, sans-serif',
         align: 'center',
@@ -223,21 +227,21 @@ function createNewText() {
 
 
 function initNewLine(line) {
-            var txt = gMeme.txts[line]
-            var fontFactor = 0.5;
-            txt.lineXRange = [
-                txt.lineX - (txt.line.length * txt.fontSize * fontFactor) / 2,
-                txt.lineX + (txt.line.length * txt.fontSize * fontFactor) / 2
-            ]
-            txt.lineYRange = [
-                txt.lineY - txt.fontSize,
-                txt.lineY
-            ]
+    var txt = gMeme.txts[line]
+    var fontFactor = 0.5;
+    txt.lineXRange = [
+        txt.lineX - (txt.line.length * txt.fontSize * fontFactor) / 2,
+        txt.lineX + (txt.line.length * txt.fontSize * fontFactor) / 2
+    ]
+    txt.lineYRange = [
+        txt.lineY - txt.fontSize,
+        txt.lineY
+    ]
 
 }
 
 function deleteText(idx) {
-    gMeme.txts.splice(idx,1)
+    gMeme.txts.splice(idx, 1)
 }
 
 function initCaption() {
