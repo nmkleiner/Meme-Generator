@@ -67,8 +67,12 @@ canvas {
 .color-choose {
     display: none;
 }
-
-
+.fill-color-container {
+    margin-bottom: 20px;
+}
+.fill-color-container .btn , .stroke-color-container .btn {
+    width: 10%;
+}
 
 .shadow{
     color: aliceblue;
@@ -119,6 +123,11 @@ canvas {
     .control-box {
         width: fit-content;
     }
+
+    .modal .save-and-share-buttons {
+    width: unset;
+}
+
     .caption{
         width: 500px;
     }

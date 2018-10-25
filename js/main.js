@@ -100,7 +100,7 @@ function renderCanvas() {
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
     drawImage(gCurrImg)
 
-    var height = 100;
+    var height = gCanvas.height / 5; //if we add more lines we need a height factor
     for (let i = 0; i < meme.txts.length; i++) {
 
         // set Text Style
@@ -112,12 +112,12 @@ function renderCanvas() {
         gCtx.shadowOffsetY = currTxt.shadowOffsetY
         gCtx.shadowBlur = currTxt.shadowBlur
         gCtx.shadowColor = currTxt.shadowColor
-
+        gCtx.textAlign = currTxt.align
 
         // draws the text in the canvas
-        gCtx.fillText(currTxt.line, 100, height)
-        gCtx.strokeText(currTxt.line, 100, height)
-        height += 200;
+        gCtx.fillText(currTxt.line, gCanvas.width/2, height)
+        gCtx.strokeText(currTxt.line, gCanvas.width/2, height)
+        height += height * 3 + currTxt.fontSize; //if we add more lines we need a height factor
     }
 }
 
