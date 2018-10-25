@@ -26,3 +26,8 @@ function toggleModal() {
     $('.modal').slideToggle(400)
     $('.modal').css('display', 'flex')
 }
+
+function resetValue(el) {
+    console.log('reset')
+    el.value = ''
+}

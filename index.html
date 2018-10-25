@@ -26,7 +26,7 @@
                         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="#" onclick="openAbout()">About</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -45,16 +45,17 @@
                     </li>
                 </ul>
                 <div class="form-inline my-2 my-lg-0">
-                    <input class="filter" list="keywords" value="" onchange="onchangeFilter()">
+                    <input class="filter" list="keywords" value="" onclick="resetValue(this)" onchange="onchangeFilter()"
+                        placeholder="Choose category">
                     <datalist id="keywords">
-                        <option value="Happy">
+                        <option value="All">
+                        <option value="Animal">
                         <option value="Crazy">
+                        <option value="Happy">
                         <option value="Sarcastic">
                         <option value="Sad">
-                        <option value="Animal">
                     </datalist>
                     <br>
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="onchangeFilter()">Search</button>
                 </div>
             </div>
         </nav>
@@ -140,16 +141,6 @@
                         <span class="button-text">Share</span>
                     </button>
                 </div>
-            </div>
-            <div class="save-and-share-buttons d-flex justify-content-between">
-                <a class="btn btn-download btn-md" onclick="onDownload(this)">
-                    <i class="fas fa-2x fa-inverse fa-download"></i>
-                    <span class="button-text">Download</span>
-                </a>
-                <button class="btn btn-md">
-                    <i class="fab fa-2x fa-inverse fa-facebook-square"></i>
-                    <span class="button-text">Share</span>
-                </button>
             </div>
         </div>
 

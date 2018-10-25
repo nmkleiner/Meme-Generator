@@ -34,6 +34,7 @@ background-color: transparent;
 
 canvas {
     /* height: 300px; */
+    
     display: block;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
