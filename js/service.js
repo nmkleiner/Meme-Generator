@@ -23,7 +23,6 @@ var gMeme = {
         }
     ]
 }
-
 var gCategoryCountMap = {
     happy: 3,
     sad: 2,
@@ -31,6 +30,11 @@ var gCategoryCountMap = {
     funny: 5,
     bad: 4,
 }
+
+var gKeyWords = ['All','Animal','Sad','Happy','Crazy','Sarcastic']
+
+
+
 
 function setCategoriesForStorgae() {
     var keys = Object.keys(gCategoryCountMap)

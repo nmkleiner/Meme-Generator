@@ -62,6 +62,19 @@ function renderImgs() {
 function onChangeCategory() {
     RenderCategoryContainer()
     renderImgs()
+    // add new keyword to the list
+    var currCategory = $('.category-filter').val()
+    var isFound = gKeyWords.find( keyword=> {
+        return (currCategory === keyword)
+    })
+    if (isFound) return;
+    gKeyWords.push(currCategory)
+    var strHtmls = ''
+    for (let i = 0; i < gKeyWords.length; i++) {
+        var strHtml = `<option value="${gKeyWords[i]}">`;
+        strHtmls += strHtml;
+    }
+    $('#keywords').html(strHtmls);
 }
 
 function onCategoryClick(category) {
