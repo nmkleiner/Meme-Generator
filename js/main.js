@@ -124,10 +124,12 @@ function createImg(imgSrc) {
     img.src = imgSrc
     return img
 }
+
 function onResize() {
     setCanvasSize()
     drawImage(gCurrImg)
 }
+
 function setCanvasSize() {
     var heightFactor = gCurrImg.height / gCurrImg.width
 
