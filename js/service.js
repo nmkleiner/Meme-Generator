@@ -262,5 +262,10 @@ function initCaption() {
 
 function listenToEnter() {
     elCaption = document.querySelector()('.caption')
-    elCaption.addEventListener('')
+    elCaption.addEventListener('keypress', function (ev) {
+        var key = ev.which || e.keyCode;
+        if (key === 13) { 
+          renderCanvas()
+        }
+    });
 }
