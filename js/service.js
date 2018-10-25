@@ -247,3 +247,9 @@ function deleteText(idx) {
 function initCaption() {
     document.querySelector('.caption').value = 'new line'
 }
+
+
+function listenToEnter() {
+    elCaption = document.querySelector()('.caption')
+    elCaption.addEventListener('')
+}

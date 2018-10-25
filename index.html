@@ -20,46 +20,34 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="openAbout()">About</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
-                    </li>
-                </ul>
-                <div class="form-inline my-2 my-lg-0">
-                    <input class="category-filter" list="keywords" value="" onclick="resetValue(this)" onchange="onChangeCategory()"
-                        placeholder="Choose category">
-                    <datalist id="keywords">
-                        <option value="All">
-                        <option value="Animal">
-                        <option value="Crazy">
-                        <option value="Happy">
-                        <option value="Sarcastic">
-                        <option value="Sad">
-                    </datalist>
-                    <br>
-                </div>
+            <a class="nav-link" href="#" onclick="onAbout()">About</a>
+            
+            <div class="form-inline my-2 my-lg-0">
+                <input class="category-filter" list="keywords" value="" onclick="resetValue(this)" onchange="onChangeCategory()"
+                    placeholder="Choose category">
+                <datalist id="keywords">
+                    <option value="All">
+                    <option value="Animal">
+                    <option value="Crazy">
+                    <option value="Happy">
+                    <option value="Sarcastic">
+                    <option value="Sad">
+                </datalist>
+                <br>
+            </div>
             </div>
         </nav>
     </header>
+    <div class="modal-about">
+            <div class="d-flex">
+                <h2>About</h2>
+                <button class="btn btn-dark" onclick="onAbout()">X</button>
+            </div>
+
+            <p>Yair Weiss</p>
+            <p>Noam Kleiner</p>
+            <p>10/2018</p>
+        </div>
 
 
     <main>
@@ -81,7 +69,7 @@
         </header>
 
         <!-- MODAL MID CONTAINER (CANVAS & CAPTIONS) -->
-        <div class="modal-mid-and-bot-container">
+        <div class="modal-mid-and-bot-container justify-content-center">
 
             <div class="modal-mid-container d-flex flex-column">
                 <input type="text" class="caption" id="top-txt" oninput="onTxtChange(this.value)" onfocus="onTxtFocus()"
@@ -91,7 +79,7 @@
 
             <!-- MODAL BOT CONTAINER (CONTROL-BOX)  -->
             <div class="control-box-grid-container">
-                <div class="control-box-item d-flex flex-column justify-content-between">
+                <div class="control-box-item d-flex flex-column justify-content-center">
 
                     <div class="btns-plus-minus-shadow d-flex justify-content-between">
                         <div class="font-size-group-item d-flex">
@@ -116,13 +104,15 @@
                         </div>
                     </div>
                     <div class="arrow-btns-container d-flex justify-content-around">
-                        <button class="btn btn-sm btn-arrow" ondblclick="onXChange(-30)" onclick="onXChange(-5)"><i class="fas fa-arrow-left"></i></button>
-                        <button class="btn btn-sm btn-arrow" ondblclick="onXChange(30)" onclick="onXChange(5)"><i class="fas fa-arrow-right"></i></button>
-                        <button class="btn btn-sm btn-arrow" ondblclick="onYChange(-30)" onclick="onYChange(-5)"><i class="fas fa-arrow-up"></i></button>
-                        <button class="btn btn-sm btn-arrow" ondblclick="onYChange(30)" onclick="onYChange(5)"><i class="fas fa-arrow-down"></i></button>
-                        <button class="btn btn-sm btn-add-row" onclick="onAddNewLine('center')">--</button>
-                        <button class="btn btn-sm btn-add-bot-row" onclick="onAddNewLine('bottom')">__</button>
-                        <button class="btn btn-sm btn-remove-row" onclick="onRemoveLine()"><i class="fas fa-trash"></i></button>
+                        <button class="btn btn-md btn-arrow" ondblclick="onXChange(-30)" onclick="onXChange(-5)"><i
+                                class="fas fa-arrow-left"></i></button>
+                        <button class="btn btn-md btn-arrow" ondblclick="onXChange(30)" onclick="onXChange(5)"><i class="fas fa-arrow-right"></i></button>
+                        <button class="btn btn-md btn-arrow" ondblclick="onYChange(-30)" onclick="onYChange(-5)"><i
+                                class="fas fa-arrow-up"></i></button>
+                        <button class="btn btn-md btn-arrow" ondblclick="onYChange(30)" onclick="onYChange(5)"><i class="fas fa-arrow-down"></i></button>
+                        <button class="btn btn-md btn-add-row" onclick="onAddNewLine('center')">--</button>
+                        <button class="btn btn-md btn-add-bot-row" onclick="onAddNewLine('bottom')">__</button>
+                        <button class="btn btn-md btn-remove-row" onclick="onRemoveLine()"><i class="fas fa-trash"></i></button>
                     </div>
                 </div>
                 <div class="color-container-item">
@@ -157,10 +147,11 @@
                         <i class="fas fa-2x fa-inverse fa-download"></i>
                         <span class="buttons-text">Download</span>
                     </a>
+                    <!-- Todo
                     <button class="btn btn-md">
                         <i class="fab fa-2x fa-inverse fa-facebook-square"></i>
                         <span class="buttons-text">Share</span>
-                    </button>
+                    </button> -->
                 </div>
             </div>
         </div>

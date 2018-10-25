@@ -13,7 +13,7 @@ function init() {
     gScreenSizes = getScreenSizes()
     createImgs()
     renderImgs()
-    initCanvas()
+    // initCanvas()
     RenderCategoryContainer()
 }
 
@@ -36,6 +36,7 @@ function RenderCategoryContainer() {
 
 
 function initCanvas() {
+    if (gCanvas) return;
     gCanvas = document.querySelector('#canvas');
     gCtx = gCanvas.getContext('2d');
 }
@@ -89,6 +90,7 @@ function onColorChange(color) {
 
 
 function onTxtChange(value) {
+    listenToEnter()
     gCurrTxtLoc;
     addText(gCurrTxtLoc, value);
     updateX(0)
@@ -124,6 +126,7 @@ function onDownload(elLink) {
 
 
 function onGalleryImgClick(elImg, imgId) {
+    initCanvas()
     setMemeByImgId(imgId)
     toggleModal()
     gCurrImg = createImg(elImg.src)
@@ -139,6 +142,7 @@ function createImg(imgSrc) {
 }
 
 function onResize() {
+    if (!gCanvas) return;
     setCanvas()
     drawImage(gCurrImg)
 }
@@ -150,7 +154,6 @@ function setCanvas() {
         gCanvas.width = 500
     } else {
         gCanvas.width = window.innerWidth
-        $('.caption').css('width', '100vw')
 
         if (window.innerHeight < window.innerWidth) {
             gCanvas.width = 500
@@ -265,3 +268,6 @@ function onRemoveLine() {
     renderCanvas()
 }
 
+function onAbout() {
+    $('.modal-about').slideToggle(500)
+}
