@@ -3,4 +3,20 @@
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
 
+.category-container{
+    background-color: antiquewhite
+}
+
+.category-word{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 35px;
+    color:cadetblue;
+   
+}
+
+.category-item:hover{
+    cursor: pointer;
+
+}
+
 

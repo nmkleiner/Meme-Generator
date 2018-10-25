@@ -49,6 +49,14 @@ var gCategoryCountMap = {
     bad: 4,
 }
 
+function setCategoriesForStorgae(){
+    var keys = Object.keys(gCategoryCountMap)
+    var vals = Object.values(gCategoryCountMap)
+    for (var i = 0; i < keys.length; i++){
+        saveToStorage(keys[i], vals[i])
+      }
+}
+
 
 function getAllStorage() {
     var values = [],
@@ -97,7 +105,7 @@ function createImgs() {
 
 
 function getImgs() {
-    var currCategoryKey = ($('.category-filter').val()).toLowerCase()
+    var currCategoryKey = ($('.category-filter').val()).toLowerCase().trim()
     if (currCategoryKey === '') return gImgs;
     else {
         var currCategoryCount =  getFromStorage(currCategoryKey)
