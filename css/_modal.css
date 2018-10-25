@@ -40,6 +40,8 @@ canvas {
 .control-box-grid-container{
     display: grid;
     grid-gap: 10px 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
 }
 
 
@@ -86,8 +88,12 @@ transform: translateY(1px);
     font-weight: 400;
     color: #212529;
 }
-
-
+.save-and-share-buttons-item{
+    flex-direction:  row;
+     align-items: center;
+     justify-content: space-between;
+    }
+    
 .save-and-share-buttons-item .btn {
     border-radius: 50%;
     background-color: transparent;
@@ -104,6 +110,16 @@ transform: translateY(1px);
 
     .caption{
         width: 500px;
+    }
+
+    .save-and-share-buttons-item{
+        flex-direction:  column;
+         align-items: flex-end;
+        }
+
+    .control-box-grid-container{
+        grid-template-columns: 1fr 1fr 1fr ;
+        grid-template-rows: 1fr ;
     }
 
 }
@@ -123,11 +139,17 @@ transform: translateY(1px);
     }
 
     .control-box-grid-container{
-        
+        grid-template-columns: 1fr ;
+        grid-template-rows: 1fr 1fr 1fr;
     }
  
     .caption{
         width: 500px;
     }
+    .save-and-share-buttons-item{
+        flex-direction:  row;
+         align-items: center;
+         justify-content: space-between;
+        }
 
 }
