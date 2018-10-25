@@ -7,6 +7,7 @@
     width: 100%;
     align-items: center;
     flex-direction: column;
+    overflow: scroll
 }
 
 .modal header {
@@ -38,12 +39,16 @@ canvas {
 }
 
 .control-box-grid-container{
+    width: 100vw;
     display: grid;
+    background-color: #252525;
     grid-gap: 10px 10px;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr;
 }
-
+.control-box-item{
+margin: 0 auto;
+}
 
 
 .font-size-group-item .btn:focus{
@@ -68,6 +73,19 @@ canvas {
 .shadow-box{
     margin-left: 5px;
 }
+
+.color-container-item{
+    margin: 0 auto;
+    border: #dae0e5 solid 1px;
+    border-radius: 5px;
+    width: fit-content;
+    height: fit-content;
+    
+}
+
+.color-fill-or-stroke-buttons .btn{
+    margin-left: 5px;
+}
 .color-fill-or-stroke-buttons .btn:focus{
 color: #212529;
 background-color: #e2e6ea;
@@ -76,10 +94,15 @@ box-shadow: 0 2px #666;
 transform: translateY(1px);
 }
 
+.color-picker{
+    margin-left: 15px;
+}
+
 .colors-btns .btn{
     height: 25px;
     width: 35px;
     margin-top: 5px;
+    margin-right: 2px;
 }
 
 .shadow-text{
