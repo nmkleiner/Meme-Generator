@@ -20,23 +20,6 @@ var gMeme = {
             shadowBlur: 0,
             shadowColor: 'rgba(0,0,0,0)',
             isSelected: false
-        },
-        {
-            line: '',
-            fontSize: 45,
-            lineY: 0,
-            lineYRange: [],
-            lineX: 0,
-            lineXRange: [],
-            fontFamily: 'Impact, Haettenschweiler, Arial Narrow Bold, sans-serif',
-            align: 'center',
-            fillColor: '#FFFFFF',
-            strokeColor: '#000000',
-            shadowOffsetX: 0,
-            shadowOffsetY: 0,
-            shadowBlur: 0,
-            shadowColor: 'rgba(0,0,0,0)',
-            isSelected: false
         }
     ]
 }
@@ -78,14 +61,14 @@ function createImgs() {
         { id: '002', url: 'img/002.jpg', keywords: ['All', 'Crazy'] },
         { id: '003', url: 'img/003.jpg', keywords: ['All', 'Happy'] },
         { id: '004', url: 'img/004.jpg', keywords: ['All', 'Animal'] },
-        { id: '005', url: 'img/005.jpg', keywords: ['All', 'Happy','Animal'] },
-        { id: '006', url: 'img/006.jpg', keywords: ['All', 'Happy','Animal'] },
+        { id: '005', url: 'img/005.jpg', keywords: ['All', 'Happy', 'Animal'] },
+        { id: '006', url: 'img/006.jpg', keywords: ['All', 'Happy', 'Animal'] },
         { id: '007', url: 'img/007.jpg', keywords: ['All', 'Sarcastic'] },
         { id: '008', url: 'img/008.jpg', keywords: ['All', 'Happy'] },
         { id: '009', url: 'img/009.jpg', keywords: ['All', 'Sarcastic'] },
         { id: '010', url: 'img/010.jpg', keywords: ['All', 'Sarcastic'] },
-        { id: '011', url: 'img/011.jpg', keywords: ['All', 'Happy','Crazy'] },
-        { id: '012', url: 'img/012.jpg', keywords: ['All', 'Happy','Sarcastic'] },
+        { id: '011', url: 'img/011.jpg', keywords: ['All', 'Happy', 'Crazy'] },
+        { id: '012', url: 'img/012.jpg', keywords: ['All', 'Happy', 'Sarcastic'] },
         { id: '013', url: 'img/013.jpg', keywords: ['All', 'Sad'] },
         { id: '014', url: 'img/014.jpg', keywords: ['All', 'Happy'] },
         { id: '015', url: 'img/015.jpg', keywords: ['All', 'Happy'] },
@@ -108,8 +91,8 @@ function getImgs() {
     var currCategoryKey = ($('.category-filter').val()).toLowerCase().trim()
     if (currCategoryKey === '') return gImgs;
     else {
-        var currCategoryCount =  getFromStorage(currCategoryKey)
-        gCategoryCountMap[currCategoryKey] = currCategoryCount +1; 
+        var currCategoryCount = getFromStorage(currCategoryKey)
+        gCategoryCountMap[currCategoryKey] = currCategoryCount + 1;
         saveToStorage(currCategoryKey, gCategoryCountMap[currCategoryKey])
         return gImgs.filter(currImg => {
             return (currImg.keywords.some(keyWord => {
@@ -175,16 +158,17 @@ function getOffset() {
 }
 
 
-function initLine() {
+function initFirstLine() {
     if (!gMeme.txts[0].lineX) {
         for (var i = 0; i < gMeme.txts.length; i++) {
             var txt = gMeme.txts[i]
 
             // init line x
+            var fontFactor = 0.5;
             txt.lineX = gCanvas.width / 2
             txt.lineXRange = [
-                txt.lineX - (txt.line.length * txt.fontSize * 0.6) / 2,
-                txt.lineX + (txt.line.length * txt.fontSize * 0.6) / 2
+                txt.lineX - (txt.line.length * txt.fontSize * fontFactor) / 2,
+                txt.lineX + (txt.line.length * txt.fontSize * fontFactor) / 2
             ]
 
             // init line Y
@@ -204,9 +188,10 @@ function updateX(xDiff) {
     var txt = gMeme.txts[gCurrTxtLoc]
     if (xDiff) txt.lineX += xDiff
 
+    var fontFactor = 0.5;
     txt.lineXRange = [
-        txt.lineX - (txt.line.length * txt.fontSize * 0.5) / 2,
-        txt.lineX + (txt.line.length * txt.fontSize * 0.5) / 2
+        txt.lineX - (txt.line.length * txt.fontSize * fontFactor) / 2,
+        txt.lineX + (txt.line.length * txt.fontSize * fontFactor) / 2
     ]
 }
 
@@ -214,7 +199,59 @@ function updateY(yDiff) {
     var txt = gMeme.txts[gCurrTxtLoc]
     if (yDiff) txt.lineY += yDiff
     txt.lineYRange = [
-        txt.lineY,
-        txt.lineY - txt.fontSize
+        txt.lineY - txt.fontSize,
+        txt.lineY
     ]
+}
+
+
+function createNewText(loc) {
+    if (loc === 'center') {
+        var lineY = gCanvas.height / 2;
+    } else {
+        var lineY = gCanvas.height * 4 / 5;
+    }
+    gMeme.txts.push({
+        line: 'new line',
+        fontSize: 45,
+        lineY,
+        lineYRange: [],
+        lineX: gCanvas.width / 2,
+        lineXRange: [],
+        fontFamily: 'Impact, Haettenschweiler, Arial Narrow Bold, sans-serif',
+        align: 'center',
+        fillColor: '#FFFFFF',
+        strokeColor: '#000000',
+        shadowOffsetX: 0,
+        shadowOffsetY: 0,
+        shadowBlur: 0,
+        shadowColor: 'rgba(0,0,0,0)',
+        isSelected: false
+    })
+    var newLineIdx = gMeme.txts.length - 1;
+    initNewLine(newLineIdx)
+}
+
+
+
+function initNewLine(line) {
+    var txt = gMeme.txts[line]
+    var fontFactor = 0.5;
+    txt.lineXRange = [
+        txt.lineX - (txt.line.length * txt.fontSize * fontFactor) / 2,
+        txt.lineX + (txt.line.length * txt.fontSize * fontFactor) / 2
+    ]
+    txt.lineYRange = [
+        txt.lineY - txt.fontSize,
+        txt.lineY
+    ]
+
+}
+
+function deleteText(idx) {
+    gMeme.txts.splice(idx, 1)
+}
+
+function initCaption() {
+    document.querySelector('.caption').value = 'new line'
 }

@@ -72,7 +72,9 @@ margin: 0 auto;
 
 .shadow-box{
     margin-left: 5px;
+    align-self: flex-end;
 }
+
 
 .color-container-item{
     margin: 0 auto;

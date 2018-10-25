@@ -23,7 +23,7 @@ function getHex(decStr) {
 
 
 function toggleModal() {
-    $('.modal').slideToggle(400)
+    $('.modal').slideToggle(600)
     $('.modal').css('display', 'flex')
 }
 
