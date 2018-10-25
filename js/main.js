@@ -2,6 +2,7 @@
 
 var gScreenSizes = {};
 var gCanvas
+var gOffset = {}
 var gCtx
 var gCurrImg = {}
 var gCurrTxtLoc
@@ -67,8 +68,30 @@ function onColorChange(color) {
 function onTxtChange(txtLoc, value) {
     gCurrTxtLoc = txtLoc;
     addText(gCurrTxtLoc, value);
+    updateX(0)
+
     renderCanvas()
 }
+
+
+function onCanvasClick(ev) {
+    var x = ev.clientX - gOffset.left;
+    console.log(x)
+    var y = ev.clientY - gOffset.top;
+    
+    var lineIdx = gMeme.txts.findIndex(txt => {
+        return (y < txt.lineYRange[0] + 10 &&
+                y > txt.lineYRange[1] - 10)
+    })
+    
+    gMeme.txts.forEach(txt => {
+        txt.isSelected = false;
+    })
+    gCurrTxtLoc = lineIdx
+
+    if (lineIdx !== -1) gMeme.txts[lineIdx].isSelected = true;
+}
+
 
 function onTxtFocus(txtLoc) {
     gCurrTxtLoc = txtLoc;
@@ -78,6 +101,9 @@ function onTxtFocus(txtLoc) {
 
 function onFontSizeChange(fontSize) {
     changeFontSize(fontSize, gCurrTxtLoc)
+    updateX(0)
+    updateY(0)
+
     renderCanvas()
 }
 
@@ -97,7 +123,7 @@ function onGalleryImgClick(elImg, imgId) {
     setMemeByImgId(imgId)
     toggleModal()
     gCurrImg = createImg(elImg.src)
-    setCanvasSize(elImg)
+    setCanvas(elImg)
     drawImage(gCurrImg)
 }
 
@@ -109,11 +135,11 @@ function createImg(imgSrc) {
 }
 
 function onResize() {
-    setCanvasSize()
+    setCanvas()
     drawImage(gCurrImg)
 }
 
-function setCanvasSize() {
+function setCanvas() {
     var heightFactor = gCurrImg.height / gCurrImg.width
 
     if (window.innerWidth > 768) {
@@ -122,6 +148,9 @@ function setCanvasSize() {
         gCanvas.width = window.innerWidth
     }
     gCanvas.height = gCanvas.width * heightFactor
+
+    gOffset = getOffset()
+    initLine()
 }
 
 function drawImage(img) {
@@ -135,11 +164,13 @@ function renderCanvas() {
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
     drawImage(gCurrImg)
 
-    var height = gCanvas.height / 5; //if we add more lines we need a height factor
+    // var height = gCanvas.height / 5; //if we add more lines we need a height factor
+    var currTxt
+    var lineY
     for (let i = 0; i < meme.txts.length; i++) {
-
         // set Text Style
-        var currTxt = meme.txts[i]
+        currTxt = meme.txts[i]
+        lineY = currTxt.lineY;
         gCtx.font = `${currTxt.fontSize}px ${currTxt.fontFamily}`
         gCtx.fillStyle = currTxt.fillColor
         gCtx.strokeStyle = currTxt.strokeColor
@@ -150,11 +181,17 @@ function renderCanvas() {
         gCtx.textAlign = currTxt.align
 
         // draws the text in the canvas
-        gCtx.fillText(currTxt.line, gCanvas.width / 2, height)
-        gCtx.strokeText(currTxt.line, gCanvas.width / 2, height)
-        height += height * 3.4; //if we add more lines we need a height factor
+        gCtx.fillText(currTxt.line, gCanvas.width / 2, lineY)
+        gCtx.strokeText(currTxt.line, gCanvas.width / 2, lineY)
     }
 }
 
 
+function onXChange(xDiff) {
+    updateX(xDiff,gCurrTxtLoc)
+}
+
+function onYChange(yDiff) {
+    updateY(yDiff,gCurrTxtLoc)
+}
 
