@@ -102,21 +102,20 @@ canvas {
 
 
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
+
+    .caption{
+        width: 500px;
+    }
     
     .range-container {
         width: 70%;
     }
-
-    .caption{
-        width: 768px;
-    }
-
 }
 
 @media (min-width: 992px){
 
-    modal {
+    .modal {
         flex-direction: row;
     }
     
