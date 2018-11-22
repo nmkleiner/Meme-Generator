@@ -1,5 +1,7 @@
 'use strict'
 
+console.log('hello world');
+
 var gScreenSizes = {};
 var gCanvas
 var gOffset = {}
