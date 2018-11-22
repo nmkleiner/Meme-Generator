@@ -1,5 +1,7 @@
 'use strict'
 
+console.log('hello world');
+
 var gScreenSizes = {};
 var gCanvas
 var gOffset = {}
@@ -10,6 +12,7 @@ var gFillOrStroke = 'fill';
 
 
 function init() {
+    console.log('baba')
     gScreenSizes = getScreenSizes()
     setCategoriesForStorgae()
     createImgs()
