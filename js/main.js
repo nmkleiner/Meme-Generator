@@ -10,6 +10,7 @@ var gFillOrStroke = 'fill';
 
 
 function init() {
+    console.log('baba')
     gScreenSizes = getScreenSizes()
     setCategoriesForStorgae()
     createImgs()
